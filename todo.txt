@@ -1,0 +1,5 @@
+
+- understand primary business goal 
+  is it scale production , speedup acoounting , consolidate multiple system
+- document existing proccess 
+- identifie must havenitigrtion with existing tool, mobile access , complience requrement 
