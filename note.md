@@ -51,8 +51,8 @@ This isn’t just one screen — it’s a **group of modules** that manage the m
 
 ### Core SCM Modules in EBS
 
-| Module                      | What It Does                               |
-| --------------------------- | ------------------------------------------ |
+| Module                  | What It Does                               |
+| ----------------------- | ------------------------------------------ |
 | Inventory (INV)         | Tracks items, stock levels, subinventories |
 | Purchasing (PO)         | Creates purchase orders to suppliers       |
 | Order Management (OM)   | Handles customer sales orders              |
@@ -77,8 +77,8 @@ While **Inventory** tracks *how many items you have*,
 ### What WMS Handles
 
 | Feature                           | Explanation                            |
-| --------------------------------- | -------------------------------------- |
-| 📍 **Locator Control**            | Exact bin/shelf/rack location          |
+| --------------------------------  | -------------------------------------- |
+| 📍 **Locator Control**             | Exact bin/shelf/rack location          |
 | 📦 **LPN (License Plate Number)** | Tracks items inside boxes/pallets      |
 | 🤖 **Barcode/RF Devices**         | Handheld scanners for warehouse staff  |
 | 🔄 **Putaway Rules**              | Where new items should be stored       |
