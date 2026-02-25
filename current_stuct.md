@@ -1,29 +1,33 @@
 # FG Production Floor to Warehouse Operation Process Flow (AS-IS)
 
-This flowchart illustrates the current (AS-IS) operational process for Finished Goods (FG) moving from the production floor to the warehouse. It covers steps including packing, palletizing, delivery options, inventory updates, and cross-checking production data with ERP systems.
+## Document Control
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | 2026-02-15 | Operations Team | Initial AS-IS documentation |
+
+## 1. Executive Summary
+This document outlines the current (AS-IS) operational process for Finished Goods (FG) moving from the production floor to the warehouse at the manufacturing facility. The process involves multiple departments including Production, Quality Control, Inventory Management, and Warehouse Operations.
 
 **Key Terms:**
+- FG: Finished Goods
+- ERP: Enterprise Resource Planning (SAP/Oracle)
+- CDC: Central Distribution Center
+- WIP: Work In Progress
+- SKU: Stock Keeping Unit
+- QA: Quality Assurance
+- GRN: Goods Receipt Note
 
-- FG: Finished Goods  
-- ERP: Enterprise Resource Planning  
-- CDC: Central Distribution Center  
-- WIP: Work In Progress  
+## 2. Process Overview
 
-**Notes:**
-
-- Auto Leveling is performed except for size 20 X 30 FG.  
-- Production and Inventory teams confirm production data before ERP batch creation.  
-- Cross-checking ensures data integrity between physical stock and ERP.
-
----
+### 2.1 Current State Flowchart
 
 ```mermaid
 flowchart TD
-
     A["Kiln output and WIP Stock at Production Floor or Line"]
     B["FG Packing and Leveling - Auto and Manual"]
     C["Pallet Making and mark the pallet card - Manual"]
-    D{"Direct Delivery from Production Floor"}
+    D{"Direct Delivery from Production Floor?"}
     E{"Checking FG Availability"}
     F["Delivery from FG Warehouse"]
     G["Follow the Direct Delivery Process"]
@@ -55,3 +59,6 @@ flowchart TD
     I --> J
     I --> M
 ```
+
+Version
+
