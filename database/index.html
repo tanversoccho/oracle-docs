@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Manager - Worldbuilding</title>
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.8.0/dist/sql-wasm.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #00d9ff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status {
+            font-size: 12px;
+            background: #00d9ff20;
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: #00d9ff;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: #0f3460;
+            border-radius: 10px;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .sidebar h2 {
+            color: #00d9ff;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .add-character-btn {
+            width: 100%;
+            padding: 10px;
+            background: #00d9ff;
+            color: #16213e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .add-character-btn:hover {
+            background: #00b7d9;
+            transform: translateY(-2px);
+        }
+
+        .character-list {
+            list-style: none;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .character-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background: #16213e;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .character-list li:hover {
+            background: #1a2a4a;
+            transform: translateX(5px);
+        }
+
+        .character-list li.active {
+            background: #00d9ff;
+            color: #16213e;
+            border-left-color: #fff;
+        }
+
+        .character-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .character-race {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .delete-char-btn {
+            float: right;
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0 5px;
+            display: none;
+        }
+
+        .character-list li:hover .delete-char-btn {
+            display: inline-block;
+        }
+
+        .content {
+            background: #0f3460;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #16213e;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background: #16213e;
+            border: none;
+            color: #eee;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            background: #1a2a4a;
+        }
+
+        .tab.active {
+            background: #00d9ff;
+            color: #16213e;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00d9ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            background: #16213e;
+            border: 1px solid #00d9ff;
+            color: #eee;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        button {
+            background: #00d9ff;
+            color: #16213e;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        button.danger {
+            background: #ff4444;
+            color: white;
+        }
+
+        .item-list {
+            margin-top: 20px;
+        }
+
+        .item-card {
+            background: #16213e;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: #00d9ff;
+        }
+
+        .delete-item {
+            background: #ff4444;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #0f3460;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            📖 Character Manager
+            <span class="status" id="dbStatus">Loading Database...</span>
+        </h1>
+        
+        <div class="main-layout">
+            <div class="sidebar">
+                <h2>📚 Characters</h2>
+                <button class="add-character-btn" onclick="showAddCharacterModal()">+ New Character</button>
+                <ul class="character-list" id="characterList"></ul>
+            </div>
+            
+            <div class="content">
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('basic')">📝 Basic Info</button>
+                    <button class="tab" onclick="switchTab('skills')">⚔️ Skills</button>
+                    <button class="tab" onclick="switchTab('inventory')">🎒 Inventory</button>
+                    <button class="tab" onclick="switchTab('affiliations')">🏛️ Affiliations</button>
+                    <button class="tab" onclick="switchTab('history')">📜 History</button>
+                    <button class="tab" onclick="switchTab('relationships')">💕 Relationships</button>
+                    <button class="tab" onclick="switchTab('notes')">📝 Notes</button>
+                </div>
+                
+                <div id="basic" class="tab-content active">
+                    <form id="characterForm">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Name *</label>
+                                <input type="text" id="charName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Alias</label>
+                                <input type="text" id="charAlias">
+                            </div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" id="charAge">
+                            </div>
+                            <div class="form-group">
+                                <label>Race</label>
+                                <input type="text" id="charRace">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <input type="text" id="charGender">
+                            </div>
+                            <div class="form-group">
+                                <label>Occupation</label>
+                                <input type="text" id="charOccupation">
+                            </div>
+                            <div class="form-group">
+                                <label>Alignment</label>
+                                <input type="text" id="charAlignment" placeholder="e.g., Lawful Good">
+                            </div>
+                            <div class="form-group">
+                                <label>Story Role</label>
+                                <select id="charRole">
+                                    <option value="protagonist">Protagonist</option>
+                                    <option value="antagonist">Antagonist</option>
+                                    <option value="mentor">Mentor</option>
+                                    <option value="sidekick">Sidekick</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Importance (1-10)</label>
+                                <input type="number" id="charImportance" min="1" max="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Personality</label>
+                            <textarea id="charPersonality" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea id="charNotes" rows="3"></textarea>
+                        </div>
+                        <button type="submit">💾 Save Changes</button>
+                        <button type="button" class="danger" onclick="deleteCurrentCharacter()">🗑️ Delete Character</button>
+                    </form>
+                </div>
+                
+                <div id="skills" class="tab-content">
+                    <div class="form-group">
+                        <h3>Add New Skill</h3>
+                        <div class="grid-3">
+                            <input type="text" id="newSkillName" placeholder="Skill name">
+                            <input type="number" id="newSkillLevel" placeholder="Level 1-10" min="1" max="10">
+                            <select id="newSkillType">
+                                <option value="combat">Combat</option>
+                                <option value="magic">Magic</option>
+                                <option value="social">Social</option>
+                                <option value="knowledge">Knowledge</option>
+                                <option value="craft">Craft</option>
+                            </select>
+                        </div>
+                        <input type="text" id="newSkillDesc" placeholder="Description" style="margin: 10px 0">
+                        <button onclick="addSkill()">+ Add Skill</button>
+                    </div>
+                    <div id="skillsList" class="item-list"></div>
+                </div>
+                
+                <div id="inventory" class="tab-content">
+                    <div class="form-group">
+                        <h3>Add New Item</h3>
+                        <div class="grid-3">
+                            <input type="text" id="newItemName" placeholder="Item name">
+                            <select id="newItemType">
+                                <option value="weapon">Weapon</option>
+                                <option value="armor">Armor</option>
+                                <option value="artifact">Artifact</option>
+                                <option value="tool">Tool</option>
+                                <option value="consumable">Consumable</option>
+                            </select>
+                            <input type="number" id="newItemQty" placeholder="Quantity" value="1">
+                        </div>
+                        <input type="text" id="newItemDesc" placeholder="Description" style="margin: 10px 0">
+                        <label><input type="checkbox" id="newItemMagical"> Magical Item</label>
+                        <button onclick="addInventory()">+ Add Item</button>
+                    </div>
+                    <div id="inventoryList" class="item-list"></div>
+                </div>
+                
+                <div id="affiliations" class="tab-content">
+                    <div class="form-group">
+                        <h3>Add New Affiliation</h3>
+                        <div class="grid-2">
+                            <input type="text" id="newOrgName" placeholder="Organization name">
+                            <input type="text" id="newOrgRole" placeholder="Role">
+                        </div>
+                        <input type="text" id="newOrgRank" placeholder="Rank" style="margin: 10px 0">
+                        <textarea id="newOrgNotes" placeholder="Notes" rows="2"></textarea>
+                        <button onclick="addAffiliation()">+ Add Affiliation</button>
+                    </div>
+                    <div id="affiliationsList" class="item-list"></div>
+                </div>
+                
+                <div id="history" class="tab-content">
+                    <div class="form-group">
+                        <h3>Add New Event</h3>
+                        <div class="grid-2">
+                            <input type="text" id="newEventTitle" placeholder="Event title">
+                            <input type="date" id="newEventDate">
+                        </div>
+                        <input type="text" id="newEventLocation" placeholder="Location" style="margin: 10px 0">
+                        <textarea id="newEventDesc" placeholder="Description" rows="3"></textarea>
+                        <button onclick="addHistory()">+ Add Event</button>
+                    </div>
+                    <div id="historyList" class="item-list"></div>
+                </div>
+                
+                <div id="relationships" class="tab-content">
+                    <div class="form-group">
+                        <h3>Add New Relationship</h3>
+                        <div class="grid-2">
+                            <select id="newRelCharId"></select>
+                            <select id="newRelType">
+                                <option value="friend">Friend</option>
+                                <option value="enemy">Enemy</option>
+                                <option value="family">Family</option>
+                                <option value="mentor">Mentor</option>
+                                <option value="lover">Lover</option>
+                            </select>
+                        </div>
+                        <input type="number" id="newRelStrength" placeholder="Strength 1-10" min="1" max="10" style="margin: 10px 0">
+                        <textarea id="newRelNotes" placeholder="Notes" rows="2"></textarea>
+                        <button onclick="addRelationship()">+ Add Relationship</button>
+                    </div>
+                    <div id="relationshipsList" class="item-list"></div>
+                </div>
+                
+                <div id="notes" class="tab-content">
+                    <div class="form-group">
+                        <h3>Add New Note</h3>
+                        <div class="grid-2">
+                            <input type="text" id="newNoteTitle" placeholder="Note title">
+                            <select id="newNoteType">
+                                <option value="backstory">Backstory</option>
+                                <option value="development">Development</option>
+                                <option value="plot">Plot Point</option>
+                                <option value="quote">Quote</option>
+                            </select>
+                        </div>
+                        <textarea id="newNoteContent" placeholder="Note content" rows="4" style="margin: 10px 0"></textarea>
+                        <button onclick="addNote()">+ Add Note</button>
+                    </div>
+                    <div id="notesList" class="item-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Character</h2>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Name *</label>
+                <input type="text" id="newCharName">
+            </div>
+            <div class="form-group">
+                <label>Race</label>
+                <input type="text" id="newCharRace">
+            </div>
+            <div class="form-group">
+                <label>Occupation</label>
+                <input type="text" id="newCharOcc">
+            </div>
+            <button onclick="addCharacter()">Create Character</button>
+        </div>
+    </div>
+
+    <script>
+        let db = null;
+        let currentCharacterId = null;
+        let allCharacters = [];
+
+        function initDatabase() {
+            const SQL = window.SQL;
+            const dbFile = localStorage.getItem('worldbuilding.db');
+            
+            if (dbFile) {
+                const uint8Array = new Uint8Array(dbFile.split(',').map(Number));
+                db = new SQL.Database(uint8Array);
+                document.getElementById('dbStatus').textContent = 'Database Loaded';
+            } else {
+                db = new SQL.Database();
+                createTables();
+                insertSampleData();
+                document.getElementById('dbStatus').textContent = 'New Database Created';
+            }
+            
+            loadCharacterList();
+            setInterval(saveDatabase, 30000);
+        }
+
+        function createTables() {
+            db.run(`CREATE TABLE IF NOT EXISTS characters (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL, alias TEXT, age INTEGER, race TEXT, gender TEXT,
+                occupation TEXT, personality TEXT, alignment TEXT, story_role TEXT,
+                importance_level INTEGER, notes TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )`);
+            
+            db.run(`CREATE TABLE IF NOT EXISTS character_skills (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                character_id INTEGER, skill_name TEXT NOT NULL,
+                proficiency_level INTEGER, skill_type TEXT, description TEXT,
+                FOREIGN KEY(character_id) REFERENCES characters(id) ON DELETE CASCADE
+            )`);
+            
+            db.run(`CREATE TABLE IF NOT EXISTS character_inventory (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                character_id INTEGER, item_name TEXT NOT NULL,
+                item_type TEXT, quantity INTEGER, description TEXT, magical INTEGER,
+                FOREIGN KEY(character_id) REFERENCES characters(id) ON DELETE CASCADE
+            )`);
+            
+            db.run(`CREATE TABLE IF NOT EXISTS character_affiliations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                character_id INTEGER, organization_name TEXT NOT NULL,
+                role TEXT, rank TEXT, notes TEXT,
+                FOREIGN KEY(character_id) REFERENCES characters(id) ON DELETE CASCADE
+            )`);
+            
+            db.run(`CREATE TABLE IF NOT EXISTS character_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                character_id INTEGER, event_date TEXT, event_title TEXT NOT NULL,
+                event_description TEXT, location TEXT,
+                FOREIGN KEY(character_id) REFERENCES characters(id) ON DELETE CASCADE
+            )`);
+            
+            db.run(`CREATE TABLE IF NOT EXISTS relationships (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                character_id INTEGER, related_character_id INTEGER,
+                relationship_type TEXT, relationship_strength INTEGER, notes TEXT,
+                FOREIGN KEY(character_id) REFERENCES characters(id) ON DELETE CASCADE,
+                FOREIGN KEY(related_character_id) REFERENCES characters(id) ON DELETE CASCADE
+            )`);
+            
+            db.run(`CREATE TABLE IF NOT EXISTS character_notes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                character_id INTEGER, note_title TEXT NOT NULL,
+                note_content TEXT, note_type TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(character_id) REFERENCES characters(id) ON DELETE CASCADE
+            )`);
+        }
+
+        function insertSampleData() {
+            db.run(`INSERT INTO characters (name, alias, age, race, occupation, personality, alignment, story_role, importance_level)
+                    VALUES ('Aria Stormborn', 'The Tempest', 24, 'Half-Elf', 'Storm Mage', 
+                           'Impulsive but caring, quick to anger but loyal', 'Chaotic Good', 'protagonist', 9)`);
+            
+            db.run(`INSERT INTO characters (name, race, occupation) VALUES ('Marcus Stone', 'Human', 'Warrior')`);
+            
+            db.run(`INSERT INTO character_skills (character_id, skill_name, proficiency_level, skill_type, description)
+                    VALUES (1, 'Lightning Magic', 8, 'magic', 'Can summon powerful lightning strikes')`);
+            
+            db.run(`INSERT INTO character_inventory (character_id, item_name, item_type, quantity, magical)
+                    VALUES (1, 'Stormbringer Staff', 'weapon', 1, 1)`);
+            
+            db.run(`INSERT INTO relationships (character_id, related_character_id, relationship_type, relationship_strength, notes)
+                    VALUES (1, 2, 'ally', 9, 'Battle-tested friends')`);
+        }
+
+        function saveDatabase() {
+            const data = db.export();
+            const dataStr = Array.from(data).join(',');
+            localStorage.setItem('worldbuilding.db', dataStr);
+            document.getElementById('dbStatus').textContent = 'Saved';
+            setTimeout(() => document.getElementById('dbStatus').textContent = 'Auto-save on', 2000);
+        }
+
+        function loadCharacterList() {
+            const result = db.exec("SELECT id, name, race, occupation FROM characters ORDER BY name");
+            if (result.length > 0) {
+                allCharacters = result[0].values.map(row => ({
+                    id: row[0], name: row[1], race: row[2], occupation: row[3]
+                }));
+            } else {
+                allCharacters = [];
+            }
+            
+            const listHtml = allCharacters.map(char => `
+                <li onclick="selectCharacter(${char.id})" data-id="${char.id}">
+                    <button class="delete-char-btn" onclick="event.stopPropagation(); deleteCharacter(${char.id})">✖</button>
+                    <div class="character-name">${escapeHtml(char.name)}</div>
+                    <div class="character-race">${escapeHtml(char.race || 'Unknown')} • ${escapeHtml(char.occupation || 'No occupation')}</div>
+                </li>
+            `).join('');
+            document.getElementById('characterList').innerHTML = listHtml || '<li>No characters yet. Create one!</li>';
+        }
+
+        function selectCharacter(id) {
+            currentCharacterId = id;
+            document.querySelectorAll('.character-list li').forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('data-id') == id) li.classList.add('active');
+            });
+            loadCharacterData(id);
+        }
+
+        function loadCharacterData(id) {
+            const result = db.exec(`SELECT * FROM characters WHERE id = ${id}`);
+            if (result.length > 0 && result[0].values.length > 0) {
+                const char = result[0].values[0];
+                const cols = result[0].columns;
+                document.getElementById('charName').value = char[cols.indexOf('name')] || '';
+                document.getElementById('charAlias').value = char[cols.indexOf('alias')] || '';
+                document.getElementById('charAge').value = char[cols.indexOf('age')] || '';
+                document.getElementById('charRace').value = char[cols.indexOf('race')] || '';
+                document.getElementById('charGender').value = char[cols.indexOf('gender')] || '';
+                document.getElementById('charOccupation').value = char[cols.indexOf('occupation')] || '';
+                document.getElementById('charPersonality').value = char[cols.indexOf('personality')] || '';
+                document.getElementById('charAlignment').value = char[cols.indexOf('alignment')] || '';
+                document.getElementById('charRole').value = char[cols.indexOf('story_role')] || 'other';
+                document.getElementById('charImportance').value = char[cols.indexOf('importance_level')] || '';
+                document.getElementById('charNotes').value = char[cols.indexOf('notes')] || '';
+            }
+            
+            loadSkills(id);
+            loadInventory(id);
+            loadAffiliations(id);
+            loadHistory(id);
+            loadRelationships(id);
+            loadNotes(id);
+            
+            const otherChars = db.exec(`SELECT id, name FROM characters WHERE id != ${id} ORDER BY name`);
+            if (otherChars.length > 0) {
+                const options = otherChars[0].values.map(c => `<option value="${c[0]}">${escapeHtml(c[1])}</option>`).join('');
+                document.getElementById('newRelCharId').innerHTML = options;
+            }
+        }
+
+        function loadSkills(id) {
+            const result = db.exec(`SELECT * FROM character_skills WHERE character_id = ${id}`);
+            if (result.length === 0) { document.getElementById('skillsList').innerHTML = '<p>No skills yet.</p>'; return; }
+            const skills = result[0].values.map(row => ({id: row[0], name: row[2], level: row[3], type: row[4], desc: row[5]}));
+            document.getElementById('skillsList').innerHTML = skills.map(s => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-title">${escapeHtml(s.name)} (Lvl ${s.level}) - ${s.type}</div>
+                        <div>${escapeHtml(s.desc || '')}</div>
+                    </div>
+                    <button class="delete-item" onclick="deleteItem('skill', ${s.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function loadInventory(id) {
+            const result = db.exec(`SELECT * FROM character_inventory WHERE character_id = ${id}`);
+            if (result.length === 0) { document.getElementById('inventoryList').innerHTML = '<p>No items yet.</p>'; return; }
+            const items = result[0].values.map(row => ({id: row[0], name: row[2], type: row[3], qty: row[4], desc: row[5], magical: row[6]}));
+            document.getElementById('inventoryList').innerHTML = items.map(i => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-title">${escapeHtml(i.name)} x${i.qty} [${i.type}]${i.magical ? ' ✨' : ''}</div>
+                        <div>${escapeHtml(i.desc || '')}</div>
+                    </div>
+                    <button class="delete-item" onclick="deleteItem('inventory', ${i.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function loadAffiliations(id) {
+            const result = db.exec(`SELECT * FROM character_affiliations WHERE character_id = ${id}`);
+            if (result.length === 0) { document.getElementById('affiliationsList').innerHTML = '<p>No affiliations yet.</p>'; return; }
+            const affils = result[0].values.map(row => ({id: row[0], org: row[2], role: row[3], rank: row[4], notes: row[5]}));
+            document.getElementById('affiliationsList').innerHTML = affils.map(a => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-title">${escapeHtml(a.org)} - ${escapeHtml(a.role)}${a.rank ? ' (' + a.rank + ')' : ''}</div>
+                        <div>${escapeHtml(a.notes || '')}</div>
+                    </div>
+                    <button class="delete-item" onclick="deleteItem('affiliation', ${a.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function loadHistory(id) {
+            const result = db.exec(`SELECT * FROM character_history WHERE character_id = ${id} ORDER BY event_date DESC`);
+            if (result.length === 0) { document.getElementById('historyList').innerHTML = '<p>No history events yet.</p>'; return; }
+            const events = result[0].values.map(row => ({id: row[0], date: row[2], title: row[3], desc: row[4], loc: row[5]}));
+            document.getElementById('historyList').innerHTML = events.map(e => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-title">${escapeHtml(e.date || 'Unknown date')}: ${escapeHtml(e.title)}</div>
+                        <div>${escapeHtml(e.loc ? '📍 ' + e.loc : '')}</div>
+                        <div>${escapeHtml(e.desc || '')}</div>
+                    </div>
+                    <button class="delete-item" onclick="deleteItem('history', ${e.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function loadRelationships(id) {
+            const result = db.exec(`SELECT r.*, c.name as related_name FROM relationships r JOIN characters c ON c.id = r.related_character_id WHERE r.character_id = ${id}`);
+            if (result.length === 0) { document.getElementById('relationshipsList').innerHTML = '<p>No relationships yet.</p>'; return; }
+            const rels = result[0].values.map(row => ({id: row[0], related: row[7], type: row[4], strength: row[5], notes: row[6]}));
+            document.getElementById('relationshipsList').innerHTML = rels.map(r => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-title">${escapeHtml(r.related)} - ${escapeHtml(r.type)} (Strength: ${r.strength}/10)</div>
+                        <div>${escapeHtml(r.notes || '')}</div>
+                    </div>
+                    <button class="delete-item" onclick="deleteItem('relationship', ${r.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function loadNotes(id) {
+            const result = db.exec(`SELECT * FROM character_notes WHERE character_id = ${id} ORDER BY created_at DESC`);
+            if (result.length === 0) { document.getElementById('notesList').innerHTML = '<p>No notes yet.</p>'; return; }
+            const notes = result[0].values.map(row => ({id: row[0], title: row[2], content: row[3], type: row[4]}));
+            document.getElementById('notesList').innerHTML = notes.map(n => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-title">${escapeHtml(n.title)} [${n.type}]</div>
+                        <div>${escapeHtml(n.content.substring(0, 150))}${n.content.length > 150 ? '...' : ''}</div>
+                    </div>
+                    <button class="delete-item" onclick="deleteItem('note', ${n.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function saveCharacter() {
+            if (!currentCharacterId) return;
+            db.run(`UPDATE characters SET 
+                name = '${escapeSql(document.getElementById('charName').value)}',
+                alias = '${escapeSql(document.getElementById('charAlias').value)}',
+                age = ${document.getElementById('charAge').value || 'NULL'},
+                race = '${escapeSql(document.getElementById('charRace').value)}',
+                gender = '${escapeSql(document.getElementById('charGender').value)}',
+                occupation = '${escapeSql(document.getElementById('charOccupation').value)}',
+                personality = '${escapeSql(document.getElementById('charPersonality').value)}',
+                alignment = '${escapeSql(document.getElementById('charAlignment').value)}',
+                story_role = '${document.getElementById('charRole').value}',
+                importance_level = ${document.getElementById('charImportance').value || 'NULL'},
+                notes = '${escapeSql(document.getElementById('charNotes').value)}',
+                updated_at = CURRENT_TIMESTAMP
+                WHERE id = ${currentCharacterId}`);
+            saveDatabase();
+            loadCharacterList();
+            alert('Character saved!');
+        }
+
+        function addSkill() {
+            if (!currentCharacterId) return;
+            db.run(`INSERT INTO character_skills (character_id, skill_name, proficiency_level, skill_type, description)
+                    VALUES (${currentCharacterId}, '${escapeSql(document.getElementById('newSkillName').value)}',
+                    ${document.getElementById('newSkillLevel').value || 1}, '${document.getElementById('newSkillType').value}',
+                    '${escapeSql(document.getElementById('newSkillDesc').value)}')`);
+            saveDatabase();
+            loadSkills(currentCharacterId);
+            document.getElementById('newSkillName').value = '';
+            document.getElementById('newSkillLevel').value = '';
+            document.getElementById('newSkillDesc').value = '';
+        }
+
+        function addInventory() {
+            if (!currentCharacterId) return;
+            db.run(`INSERT INTO character_inventory (character_id, item_name, item_type, quantity, description, magical)
+                    VALUES (${currentCharacterId}, '${escapeSql(document.getElementById('newItemName').value)}',
+                    '${document.getElementById('newItemType').value}', ${document.getElementById('newItemQty').value || 1},
+                    '${escapeSql(document.getElementById('newItemDesc').value)}', ${document.getElementById('newItemMagical').checked ? 1 : 0})`);
+            saveDatabase();
+            loadInventory(currentCharacterId);
+            document.getElementById('newItemName').value = '';
+            document.getElementById('newItemDesc').value = '';
+            document.getElementById('newItemMagical').checked = false;
+        }
+
+        function addAffiliation() {
+            if (!currentCharacterId) return;
+            db.run(`INSERT INTO character_affiliations (character_id, organization_name, role, rank, notes)
+                    VALUES (${currentCharacterId}, '${escapeSql(document.getElementById('newOrgName').value)}',
+                    '${escapeSql(document.getElementById('newOrgRole').value)}', '${escapeSql(document.getElementById('newOrgRank').value)}',
+                    '${escapeSql(document.getElementById('newOrgNotes').value)}')`);
+            saveDatabase();
+            loadAffiliations(currentCharacterId);
+            document.getElementById('newOrgName').value = '';
+            document.getElementById('newOrgRole').value = '';
+            document.getElementById('newOrgRank').value = '';
+            document.getElementById('newOrgNotes').value = '';
+        }
+
+        function addHistory() {
+            if (!currentCharacterId) return;
+            db.run(`INSERT INTO character_history (character_id, event_date, event_title, event_description, location)
+                    VALUES (${currentCharacterId}, '${document.getElementById('newEventDate').value}',
+                    '${escapeSql(document.getElementById('newEventTitle').value)}', '${escapeSql(document.getElementById('newEventDesc').value)}',
+                    '${escapeSql(document.getElementById('newEventLocation').value)}')`);
+            saveDatabase();
+            loadHistory(currentCharacterId);
+            document.getElementById('newEventTitle').value = '';
+            document.getElementById('newEventDate').value = '';
+            document.getElementById('newEventDesc').value = '';
+            document.getElementById('newEventLocation').value = '';
+        }
+
+        function addRelationship() {
+            if (!currentCharacterId) return;
+            db.run(`INSERT INTO relationships (character_id, related_character_id, relationship_type, relationship_strength, notes)
+                    VALUES (${currentCharacterId}, ${document.getElementById('newRelCharId').value},
+                    '${document.getElementById('newRelType').value}', ${document.getElementById('newRelStrength').value || 5},
+                    '${escapeSql(document.getElementById('newRelNotes').value)}')`);
+            saveDatabase();
+            loadRelationships(currentCharacterId);
+            document.getElementById('newRelStrength').value = '';
+            document.getElementById('newRelNotes').value = '';
+        }
+
+        function addNote() {
+            if (!currentCharacterId) return;
+            db.run(`INSERT INTO character_notes (character_id, note_title, note_content, note_type)
+                    VALUES (${currentCharacterId}, '${escapeSql(document.getElementById('newNoteTitle').value)}',
+                    '${escapeSql(document.getElementById('newNoteContent').value)}', '${document.getElementById('newNoteType').value}')`);
+            saveDatabase();
+            loadNotes(currentCharacterId);
+            document.getElementById('newNoteTitle').value = '';
+            document.getElementById('newNoteContent').value = '';
+        }
+
+        function deleteItem(table, id) {
+            if (confirm('Delete this item?')) {
+                db.run(`DELETE FROM character_${table} WHERE id = ${id}`);
+                saveDatabase();
+                if (table === 'skills') loadSkills(currentCharacterId);
+                else if (table === 'inventory') loadInventory(currentCharacterId);
+                else if (table === 'affiliations') loadAffiliations(currentCharacterId);
+                else if (table === 'history') loadHistory(currentCharacterId);
+                else if (table === 'relationships') loadRelationships(currentCharacterId);
+                else if (table === 'notes') loadNotes(currentCharacterId);
+            }
+        }
+
+        function deleteCharacter(id) {
+            if (confirm('Delete this character permanently?')) {
+                db.run(`DELETE FROM characters WHERE id = ${id}`);
+                saveDatabase();
+                if (currentCharacterId === id) {
+                    currentCharacterId = null;
+                    document.getElementById('charName').value = '';
+                    document.getElementById('skillsList').innerHTML = '';
+                    document.getElementById('inventoryList').innerHTML = '';
+                    document.getElementById('affiliationsList').innerHTML = '';
+                    document.getElementById('historyList').innerHTML = '';
+                    document.getElementById('relationshipsList').innerHTML = '';
+                    document.getElementById('notesList').innerHTML = '';
+                }
+                loadCharacterList();
+            }
+        }
+
+        function deleteCurrentCharacter() {
+            if (currentCharacterId) deleteCharacter(currentCharacterId);
+        }
+
+        function addCharacter() {
+            const name = document.getElementById('newCharName').value;
+            if (!name) { alert('Name is required!'); return; }
+            db.run(`INSERT INTO characters (name, race, occupation) VALUES ('${escapeSql(name)}', 
+                    '${escapeSql(document.getElementById('newCharRace').value)}', 
+                    '${escapeSql(document.getElementById('newCharOcc').value)}')`);
+            saveDatabase();
+            loadCharacterList();
+            closeModal();
+            document.getElementById('newCharName').value = '';
+            document.getElementById('newCharRace').value = '';
+            document.getElementById('newCharOcc').value = '';
+        }
+
+        function showAddCharacterModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function escapeSql(str) {
+            if (!str) return '';
+            return str.replace(/'/g, "''");
+        }
+
+        document.getElementById('characterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            saveCharacter();
+        });
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('modal')) closeModal();
+        }
+
+        window.addEventListener('load', () => {
+            initDatabase();
+        });
+    </script>
+</body>
+</html>
