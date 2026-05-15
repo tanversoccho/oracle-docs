@@ -4,58 +4,80 @@
 h   l
   j
 
+  CTRL-H               1  same as "h"
+  CTRL-J               1  same as "j"
+  CTRL-K                  not used
+  CTRL-L                  redraw screen
+  CTRL-P               1  same as "k"
+  CTRL-N               1  same as "j"
 CTRL-@                  not used
 h                    1  cursor N chars to the left
 <BS>                 1  same as "h"
 <Left>               1  same as "h"
-CTRL-H               1  same as "h"
 j                    1  cursor N lines downward
 <NL>                 1  same as "j"
 <Down>               1  same as "j"
-CTRL-J               1  same as "j"
-CTRL-N               1  same as "j"
 k                    1  cursor N lines upward
-CTRL-P               1  same as "k"
 <Up>                 1  same as "k"
 l                    1  cursor N chars to the right
 <Space>              1  same as "l"
 <Right>              1  same as "l"
 
+H                    1  cursor to line N from top of screen
+J                    2  Join N lines; default is 2
+K                       lookup Keyword under the cursor with 'keywordprg'
+L                    1  cursor to line N from bottom of screen
+M                    1  cursor to middle line of screen
+
+m{A-Za-z}               set mark {A-Za-z} at cursor position
+'{a-zA-Z0-9}         1  cursor to the first CHAR on the line with mark {a-zA-Z0-9}
+''                   1  cursor to the first CHAR of the line where the cursor was before the latest jump.
+'(                   1  cursor to the first CHAR on the line of the start of the current sentence
+')                   1  cursor to the first CHAR on the line of the end of the current sentence
+'`[`                 1  cursor to the first CHAR on the line of the start of last operated text or start of put text
+'`]`                 1  cursor to the first CHAR on the line of the end of last operated text or end of put text
+'{                   1  cursor to the first CHAR on the line of the start of the current paragraph
+'}                   1  cursor to the first CHAR on the line of the end of the current paragraph
+'<                   1  cursor to the first CHAR of the line where highlighted area starts/started in the current buffer.
+'>                   1  cursor to the first CHAR of the line where highlighted area ends/ended in the current buffer.
+
+{'a-zA-Z0-9}         1  cursor to the mark {a-zA-Z0-9}
+`` `(``                1  cursor to the start of the current sentence
+`` `)``                1  cursor to the end of the current sentence
+`` `<``                1  cursor to the start of the highlighted area
+`` `>``                1  cursor to the end of the highlighted area
+`` `[``                1  cursor to the start of last operated text or start of putted text
+`` `] ``               1  cursor to the end of last operated text or end of putted text
+``` `` ```               1  cursor to the position before latest jump
+`` `{ ``               1  cursor to the start of the current paragraph
+`` `} ``               1  cursor to the end of the current paragraph
+
   (
 b   w
   )
 
-{ "w", desc = "Next word" },
 w                    1  cursor N words forward
 <S-Right>            1  same as "w"
 <C-Right>            1  same as "w"
-{ "b", desc = "Prev word" },
 b                    1  cursor N words backward
 <S-Left>             1  same as "b"
 <C-Left>             1  same as "b"
-(  1  cursor N sentences backward
-)  1  cursor N sentences forward
+(                    1  cursor N sentences backward
+)                    1  cursor N sentences forward
 
-H                    1  cursor to line N from top of screen
-M                    1  cursor to middle line of screen
-L                    1  cursor to line N from bottom of screen
 
   {
 B   W
   }
 
 { "W", desc = "Next WORD" },
-W                    1  cursor N WORDS forward
 { "B", desc = "Prev WORD" },
-B                    1  cursor N WORDS backward
 { "{", desc = "Prev empty line" },
 { "}", desc = "Next empty line" },
 
-e  desc = "Next end of word"
 e                    1  cursor forward to the end of word N
 ge desc = "Prev end of word"
 
-E  desc = "Next end of WORD"
 E                    1  cursor forward to the end of WORD N
 gE -> move to prev big word at the ending
 
@@ -86,23 +108,24 @@ _                    1  cursor to the first CHAR N - 1 lines lower
 
 # Searching:
 
-{ "f", desc = "Move to next char" },
-{ "F", desc = "Move to prev char" },
+f{char}              1  cursor to Nth occurrence of {char} to the right
+F{char}              1  cursor to the Nth occurrence of {char} to the left
+t{char}              1  cursor till before Nth occurrence of {char} to the right
+T{char}              1  cursor till after Nth occurrence of {char} to the left
 
-{ "t", desc = "Move before next char" },
-{ "T", desc = "Move before prev char" },
+,                    1  repeat latest f, t, F or T in opposite direction N times
+;                    1  repeat latest f, t, F or T N times
 
-{ ",", desc = "Prev ftFT" },
-{ ";", desc = "Next ftFT" },
-
-{ "?", desc = "Search backward" },
-{ "/", desc = "Search forward" },
+/<CR>                1  search forward for {pattern} of last search
+/{pattern}<CR>       1  search forward for the Nth occurrence of {pattern}
+?<CR>                1  search backward for {pattern} of last search
+?{pattern}<CR>       1  search backward for the Nth previous occurrence of {pattern}
 
 { "%", desc = "Matching (){}[]" },
 
- " ' ( ) { } `[` `]` < > b p s t w ```  B W  
-
 # text_objects
+
+ " ' ( ) { } `[` `]` < > b p s t w ```  B W  
 
 { "a", group = "around" },
 { 'a"', desc = '" string' },
@@ -150,7 +173,6 @@ m -> mark current position with a letter (e.g., ma)
 u -> undo last change
 x -> delete character under cursor
 X -> delete character before cursor
-J -> join current line with next line
 C -> change from cursor to end of line
 D -> delete from cursor to end of line
 
@@ -226,13 +248,11 @@ o -> go to insert mode on a new line below current line
 CTRL-V  start blockwise Visual mode
 CTRL-Q  not used, or used for terminal control flow
 
-"r", desc = "Replace" ,
+r{char}              2  replace N chars with {char}
+R                    2  enter replace mode: overtype existing characters, repeat the entered text N-1 times
 
 # scrolling
 
-{ "H", desc = "Home line of window (top)" },
-{ "L", desc = "Last line of window" },
-{ "M", desc = "Middle line of window" },
 
 ```
       CTRL-U
@@ -300,6 +320,7 @@ CTRL-W P                go to preview window
 CTRL-W CTRL-P           same as "CTRL-W p"
 CTRL-W R                rotate windows upwards N times
 CTRL-W CTRL-R           same as "CTRL-W r"
+CTRL-W s                split current window in two parts, new window N lines high
 CTRL-W S                same as "CTRL-W s"
 CTRL-W CTRL-S           same as "CTRL-W s"
 CTRL-W T                move current window to a new tab page
@@ -322,7 +343,6 @@ CTRL-W p                go to previous (last accessed) window
 CTRL-W q                quit current window (like :quit)
 CTRL-W CTRL-Q           same as "CTRL-W q"
 CTRL-W r                rotate windows downwards N times
-CTRL-W s                split current window in two parts, new window N lines high
 CTRL-W t                go to top window
 CTRL-W CTRL-T           same as "CTRL-W t"
 CTRL-W v                split current window vertically, new window N columns wide
@@ -380,6 +400,25 @@ windows
 
 ---
 
+g{char}                 extended commands, see g below
+{ "g%", desc = "Cycle backwards through results" },
+
+{ "g,", desc = "Go to `[count]`newer position in change list" },
+{ "g;", desc = "Go to `[count]` older position in change list" },
+
+{ "gn", desc = "Search forwards and select" },
+{ "gN", desc = "Search backwards and select" },
+
+{ "gT", desc = "Go to previous tab page" },
+{ "gt", desc = "Go to next tab page" },
+
+{ "gf", desc = "Go to file under cursor" },
+{ "gi", desc = "Go to last insert" },
+{ "gv", desc = "Last visual selection" },
+{ "gx", desc = "Open file with system app" },
+    }
+
+z{char}                 commands starting with 'z', see z below
   <CR> = A C D E H L M O R a b c d e g i m o r s t v w x z
 
 M.z = {
@@ -413,6 +452,9 @@ M.z = {
   { "zb", desc = "Bottom this line" },
 }
 
+`[`{char}               square bracket command (see `[` below)
+`]`{char}               square bracket command (see `]` below)
+
 { "`[%`", desc = "Previous unmatched group" },
 { "`]%`", desc = "Next unmatched group" },
 
@@ -432,74 +474,33 @@ M.z = {
 { "`[{`", desc = "Previous {" },
 { "`]{`", desc = "Next {" },
 
-M.g = {
-  { "g%", desc = "Cycle backwards through results" },
 
-  { "g,", desc = "Go to `[count]`newer position in change list" },
-  { "g;", desc = "Go to `[count]` older position in change list" },
 
-  { "gn", desc = "Search forwards and select" },
-  { "gN", desc = "Search backwards and select" },
 
-  { "gT", desc = "Go to previous tab page" },
-  { "gt", desc = "Go to next tab page" },
+q{0-9a-zA-Z"}           record typed characters into named register {0-9a-zA-Z"} (uppercase to append)
+@{a-z}               2  execute the contents of register {a-z} N times
+@@                   2  repeat the previous @{a-z} N times
+@:                      repeat the previous ":" command N times
 
-  { "gf", desc = "Go to file under cursor" },
-  { "gi", desc = "Go to last insert" },
-  { "gv", desc = "Last visual selection" },
-  { "gx", desc = "Open file with system app" },
-}
-
-'{a-zA-Z0-9}         1  cursor to the first CHAR on the line with mark {a-zA-Z0-9}
-''                   1  cursor to the first CHAR of the line where the cursor was before the latest jump.
-'(                   1  cursor to the first CHAR on the line of the start of the current sentence
-')                   1  cursor to the first CHAR on the line of the end of the current sentence
-'`[`                 1  cursor to the first CHAR on the line of the start of last operated text or start of put text
-'`]`                 1  cursor to the first CHAR on the line of the end of last operated text or end of put text
-'{                   1  cursor to the first CHAR on the line of the start of the current paragraph
-'}                   1  cursor to the first CHAR on the line of the end of the current paragraph
-'<                   1  cursor to the first CHAR of the line where highlighted area starts/started in the current buffer.
-'>                   1  cursor to the first CHAR of the line where highlighted area ends/ended in the current buffer.
 
 !{motion}{filter}    2  filter Nmove text through the {filter} command
 !!{filter}	         2  filter N lines through the {filter} command
-&                    2  repeat last :s
 "{register}             use {register} for next delete, yank or put ({.%#:} only work with put)
+&                    2  repeat last :s
 ~                    2  'tildeop' off: switch case of N characters under cursor and move the cursor N characters to the right
 
-/<CR>                1  search forward for {pattern} of last search
-/{pattern}<CR>       1  search forward for the Nth occurrence of {pattern}
-?<CR>                1  search backward for {pattern} of last search
-?{pattern}<CR>       1  search backward for the Nth previous occurrence of {pattern}
 
-@{a-z}               2  execute the contents of register {a-z} N times
-@:                      repeat the previous ":" command N times
-@@                   2  repeat the previous @{a-z} N times
 
-`\`                     not used
-`[`{char}               square bracket command (see `[` below)
-`]`{char}               square bracket command (see `]` below)
-
-{'a-zA-Z0-9}         1  cursor to the mark {a-zA-Z0-9}
-`` `(``                1  cursor to the start of the current sentence
-`` `)``                1  cursor to the end of the current sentence
-`` `<``                1  cursor to the start of the highlighted area
-`` `>``                1  cursor to the end of the highlighted area
-`` `[``                1  cursor to the start of last operated text or start of putted text
-`` `] ``               1  cursor to the end of last operated text or end of putted text
-``` `` ```               1  cursor to the position before latest jump
-`` `{ ``               1  cursor to the start of the current paragraph
-`` `} ``               1  cursor to the end of the current paragraph
-
-CTRL-`[` <Esc>          not used
+`\`                     default leader key
 CTRL-\ a - z            reserved for extensions
 CTRL-\ CTRL-N           go to Normal mode (no-op)
 CTRL-\ CTRL-G           go to Normal mode (no-op)
-CTRL-\ others           not used
 CTRL-]                  :ta to ident under cursor
 CTRL-^                  edit Nth alternate file (equivalent to ":e #N")
 CTRL-<Tab>              same as g<Tab> : go to last accessed tab page
+CTRL-\ others           not used
 CTRL-_                  not used
+CTRL-`[` <Esc>          not used
 
 
 CTRL-C                  interrupt current (search) command
@@ -507,38 +508,17 @@ CTRL-Z                  suspend program (or start new shell)
 CTRL-A               2  add N to number at/after cursor
 CTRL-X               2  subtract N from number at/after cursor
 CTRL-G                  display current file name and position
-CTRL-L                  redraw screen
 CTRL-O               1  go to N older entry in jump list
-CTRL-K                  not used
 CTRL-S                  not used, or used for terminal control flow
 CTRL-R               2  redo changes which were undone with 'u'
 CTRL-T                  jump to N older Tag in tag list
 
 
-
-m{A-Za-z}               set mark {A-Za-z} at cursor position
-q{0-9a-zA-Z"}           record typed characters into named register {0-9a-zA-Z"} (uppercase to append)
-
-f{char}              1  cursor to Nth occurrence of {char} to the right
-F{char}              1  cursor to the Nth occurrence of {char} to the left
-t{char}              1  cursor till before Nth occurrence of {char} to the right
-T{char}              1  cursor till after Nth occurrence of {char} to the left
-r{char}              2  replace N chars with {char}
-R                    2  enter replace mode: overtype existing characters, repeat the entered text N-1 times
-
-g{char}                 extended commands, see g below
-z{char}                 commands starting with 'z', see z below
-
-
-J                    2  Join N lines; default is 2
-K                       lookup Keyword under the cursor with 'keywordprg'
 U                    2  undo all latest changes on one line
 ZZ                      write if buffer changed and close window
 ZQ                      close window without writing
 
 
-,                    1  repeat latest f, t, F or T in opposite direction N times
-;                    1  repeat latest f, t, F or T N times
 .                    2  repeat last change with count replaced with N
 :                    1  start entering an Ex command
 {count}:                start entering an Ex command with range from current line to N-1 lines down
