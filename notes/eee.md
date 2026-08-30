@@ -199,6 +199,7 @@ FOUR: Operational Amplifiers 223
     4.9.3 Frequency response of the feedback network 284
 Additional Exercises for Chapter 4 287
 Review of Chapter 4 288
+
 FIVE: Precision Circuits 292
 5.1 Precision op-amp design techniques 292
     5.1.1 Precision versus dynamic range 292
@@ -290,6 +291,7 @@ FIVE: Precision Circuits 292
     5.17.4 Impedance matching 382 Art of Electronics Third Edition Contents xiii
     5.17.5 Differential amplifier selection criteria 383
 Review of Chapter 5 388
+
 SIX: Filters 391
 6.1 Introduction 391
 6.2 Passive filters 391
@@ -310,6 +312,7 @@ SIX: Filters 391
     6.3.7 Digital signal processing 418
     6.3.8 Filter miscellany 422 Additional Exercises for Chapter 6 422
 Review of Chapter 6 423
+
 SEVEN: Oscillators and Timers 425
 7.1 Oscillators 425
     7.1.1 Introduction to oscillators 425
@@ -328,6 +331,7 @@ SEVEN: Oscillators and Timers 425
     7.2.3 A monostable application: limiting pulse width and duty cycle 465
     7.2.4 Timing with digital counters 465
 Review of Chapter 7 470
+
 EIGHT: Low-Noise Techniques 473
 8.1 ‘‘Noise” 473
     8.1.1 Johnson (Nyquist) noise 474
@@ -420,6 +424,7 @@ EIGHT: Low-Noise Techniques 473
     8.16.3 Grounding between instruments 583
 Additional Exercises for Chapter 8 588
 Review of Chapter 8 590
+
 NINE: Voltage Regulation and Power Conversion 594
 9.1 Tutorial: from zener to series-pass linear regulator 595
     9.1.1 Adding feedback 596
@@ -495,6 +500,7 @@ NINE: Voltage Regulation and Power Conversion 594
     9.13.4 Outboard pass transistor 695
     9.13.5 High-voltage regulators 695
 Review of Chapter 9 699
+
 TEN: Digital Logic 703
 10.1 Basic logic concepts 703
     10.1.1 Digital versus analog 703
@@ -538,6 +544,7 @@ TEN: Digital Logic 703
     10.8.3 Congenital weaknesses of TTL and CMOS 758
 Additional Exercises for Chapter 10 760
 Review of Chapter 10 762
+
 ELEVEN: Programmable Logic Devices 764
 11.1 A brief history 764
 11.2 The hardware 765
@@ -557,6 +564,7 @@ ELEVEN: Programmable Logic Devices 764
     11.4.1 By Technologies 782
     11.4.2 By User Communities 785
 Review of Chapter 11 787
+
 TWELVE: Logic Interfacing 790
 12.1 CMOS and TTL logic interfacing 790
     12.1.1 Logic family chronology – a brief history 790
@@ -609,6 +617,7 @@ TWELVE: Logic Interfacing 790
     12.10.4 RS-232 871
     12.10.5 Wrapup 874
 Review of Chapter 12 875
+
 THIRTEEN : Digital meets Analog 879
 13.1 Some preliminaries 879
     13.1.1 The basic performance parameters 879
@@ -695,8 +704,8 @@ THIRTEEN : Digital meets Analog 879
     13.14.8 A “hybrid digital filter” 983
 Additional Exercises for Chapter 13 984
 Review of Chapter 13 985
-FOURTEEN: Computers, Controllers, and
-Data Links 989
+
+FOURTEEN: Computers, Controllers, and Data Links 989
 14.1 Computer architecture: CPU and data bus 990
     14.1.1 CPU 990
     14.1.2 Memory 991
@@ -755,6 +764,7 @@ Data Links 989
     14.8.1 Integers 1046
     14.8.2 Floating-point numbers 1047
 Review of Chapter 14 1049
+
 FIFTEEN: Microcontrollers 1053
 15.1 Introduction 1053
 15.2 Design example 1: suntan monitor (V) 1054
@@ -862,8 +872,7 @@ J.2 Entering a Diagram 1146
 J.3 Running a simulation 1146
     J.3.1 Schematic entry 1146
     J.3.2 Simulation: frequency sweep 1147
-    J.3.3 Simulation: input and output
-waveforms 1147
+    J.3.3 Simulation: input and output waveforms 1147
 J.4 Some final points 1148
 J.5 A detailed example: exploring amplifier distortion 1148
 J.6 Expanding the parts database 1149
