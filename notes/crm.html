@@ -1,0 +1,1714 @@
+<p><strong>Lead → Qualification → Opportunity → Customer → Sales →
+Follow-up</strong></p>
+<h3 id="crm-main-modules">1. CRM main modules</h3>
+<p>I would structure it like this:</p>
+<pre class="text"><code>CRM
+├── Dashboard
+├── Leads
+├── Customers
+├── Contacts
+├── Opportunities
+├── Activities / Follow-ups
+├── Campaigns
+├── Tasks
+└── Reports</code></pre>
+<h3 id="lead-management">2. Lead Management</h3>
+<p>A <strong>Lead</strong> is a potential customer who has not yet
+become a confirmed customer.</p>
+<p>Important fields:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lead ID</td>
+<td>LD-000125</td>
+</tr>
+<tr>
+<td>Lead Date</td>
+<td>25-Aug-2026</td>
+</tr>
+<tr>
+<td>Lead Name</td>
+<td>ABC Trading Ltd.</td>
+</tr>
+<tr>
+<td>Contact Person</td>
+<td>Mr. Rahim</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>01XXXXXXXXX</td>
+</tr>
+<tr>
+<td>Email</td>
+<td><a href="mailto:rahim@example.com">rahim@example.com</a></td>
+</tr>
+<tr>
+<td>Company</td>
+<td>ABC Trading</td>
+</tr>
+<tr>
+<td>Lead Type</td>
+<td>New Business</td>
+</tr>
+<tr>
+<td>Lead Source</td>
+<td>Website</td>
+</tr>
+<tr>
+<td>Industry</td>
+<td>Manufacturing</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>Dhaka</td>
+</tr>
+<tr>
+<td>Interested Product</td>
+<td>ERP Software</td>
+</tr>
+<tr>
+<td>Estimated Value</td>
+<td>৳500,000</td>
+</tr>
+<tr>
+<td>Expected Closing Date</td>
+<td>30-Sep-2026</td>
+</tr>
+<tr>
+<td>Salesperson</td>
+<td>Tanver</td>
+</tr>
+<tr>
+<td>Lead Status</td>
+<td>Qualified</td>
+</tr>
+<tr>
+<td>Lead Priority</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Remarks</td>
+<td>Interested in ERP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lead-type">3. Lead Type</h3>
+<p>Don’t make <strong>Lead Type</strong> the same thing as <strong>Lead
+Source</strong>.</p>
+<p><strong>Lead Type</strong> describes <em>what kind of business
+opportunity it is</em>:</p>
+<ul>
+<li>New Customer</li>
+<li>Existing Customer</li>
+<li>New Business</li>
+<li>Cross Sell</li>
+<li>Up Sell</li>
+<li>Renewal</li>
+<li>Repeat Business</li>
+<li>Partner/Reseller</li>
+<li>Government</li>
+<li>Corporate</li>
+<li>Individual</li>
+</ul>
+<p>You can make these configurable from a <strong>CRM Setup → Lead
+Type</strong> screen.</p>
+<h3 id="lead-source">4. Lead Source</h3>
+<p>This tells you <strong>where the lead came from</strong>:</p>
+<ul>
+<li>Website</li>
+<li>Facebook</li>
+<li>LinkedIn</li>
+<li>Email</li>
+<li>Phone Call</li>
+<li>Referral</li>
+<li>Existing Customer</li>
+<li>Salesperson</li>
+<li>Exhibition/Event</li>
+<li>Advertisement</li>
+<li>Partner</li>
+<li>Walk-in</li>
+<li>Other</li>
+</ul>
+<p>This distinction is important for reporting.</p>
+<p>For example:</p>
+<blockquote>
+<p><strong>Lead Type:</strong> New Customer <strong>Lead
+Source:</strong> Website</p>
+</blockquote>
+<h3 id="lead-status">5. Lead Status</h3>
+<p>A useful lifecycle:</p>
+<pre class="text"><code>New
+ ↓
+Contacted
+ ↓
+Qualified
+ ↓
+Requirement Identified
+ ↓
+Proposal/Quotation
+ ↓
+Negotiation
+ ↓
+Won / Lost</code></pre>
+<p>You could also have:</p>
+<ul>
+<li>Unqualified</li>
+<li>On Hold</li>
+<li>Follow-up Required</li>
+<li>Converted</li>
+</ul>
+<h3 id="lead-qualification">6. Lead Qualification</h3>
+<p>When a salesperson receives a lead, they should be able to
+record:</p>
+<ul>
+<li>Requirement</li>
+<li>Budget</li>
+<li>Decision maker</li>
+<li>Purchase timeline</li>
+<li>Interested products</li>
+<li>Expected quantity</li>
+<li>Expected sales value</li>
+<li>Competitor</li>
+<li>Probability %</li>
+<li>Qualification remarks</li>
+</ul>
+<p>A simple qualification model could be:</p>
+<p><strong>Hot / Warm / Cold</strong></p>
+<p>or a score:</p>
+<pre class="text"><code>Lead Score: 75/100</code></pre>
+<h3 id="customer-information">7. Customer Information</h3>
+<p>Once a lead becomes a customer, maintain a separate customer
+profile.</p>
+<h4 id="basic-information">Basic information</h4>
+<ul>
+<li>Customer ID</li>
+<li>Customer Code</li>
+<li>Customer Name</li>
+<li>Customer Type</li>
+<li>Company Name</li>
+<li>Customer Category</li>
+<li>Industry</li>
+<li>Business Type</li>
+<li>TIN</li>
+<li>BIN/VAT</li>
+<li>Website</li>
+</ul>
+<h4 id="contact-information">Contact information</h4>
+<ul>
+<li>Contact person</li>
+<li>Designation</li>
+<li>Mobile</li>
+<li>Phone</li>
+<li>Email</li>
+<li>Alternative contact</li>
+</ul>
+<h4 id="address">Address</h4>
+<ul>
+<li>Head Office</li>
+<li>Billing Address</li>
+<li>Shipping Address</li>
+<li>District</li>
+<li>Division</li>
+<li>Country</li>
+</ul>
+<h4 id="business-information">Business information</h4>
+<ul>
+<li>Salesperson</li>
+<li>Territory</li>
+<li>Customer Group</li>
+<li>Credit Limit</li>
+<li>Payment Terms</li>
+<li>Currency</li>
+<li>Preferred Contact Method</li>
+</ul>
+<h3 id="contacts">8. Contacts</h3>
+<p>A company can have multiple contacts, so don’t put everything into
+the customer table.</p>
+<p>For example:</p>
+<pre class="text"><code>ABC Corporation
+│
+├── Mr. Rahim — Managing Director
+├── Mr. Karim — Purchase Manager
+├── Ms. Sara — Accounts Manager
+└── Mr. Hasan — IT Manager</code></pre>
+<p>Contact fields:</p>
+<ul>
+<li>Contact ID</li>
+<li>Customer ID</li>
+<li>Name</li>
+<li>Designation</li>
+<li>Department</li>
+<li>Mobile</li>
+<li>Email</li>
+<li>Contact type</li>
+<li>Primary contact</li>
+<li>Decision maker</li>
+<li>Active/Inactive</li>
+</ul>
+<h3 id="opportunity-management">9. Opportunity Management</h3>
+<p>A lead can become an <strong>Opportunity</strong> when there is a
+real sales possibility.</p>
+<p>Example:</p>
+<pre class="text"><code>Lead
+ABC Corporation
+       ↓
+Qualified
+       ↓
+Opportunity
+ERP Implementation
+       ↓
+Quotation
+৳2,500,000
+       ↓
+Negotiation
+       ↓
+Won</code></pre>
+<p>Opportunity fields:</p>
+<ul>
+<li>Opportunity ID</li>
+<li>Customer/Lead</li>
+<li>Opportunity name</li>
+<li>Product/service</li>
+<li>Estimated value</li>
+<li>Probability</li>
+<li>Expected closing date</li>
+<li>Salesperson</li>
+<li>Stage</li>
+<li>Competitor</li>
+<li>Requirement</li>
+<li>Remarks</li>
+</ul>
+<h3 id="activities-follow-up">10. Activities / Follow-up</h3>
+<p>This is very important for a sales CRM.</p>
+<p>Each lead/customer should have an activity timeline:</p>
+<pre class="text"><code>25-Aug  Phone Call
+        Discussed ERP requirement
+
+27-Aug  Meeting
+        Demonstration scheduled
+
+30-Aug  Follow-up
+        Customer requested quotation
+
+02-Sep  Email
+        Quotation sent</code></pre>
+<p>Activity types:</p>
+<ul>
+<li>Phone Call</li>
+<li>Email</li>
+<li>Meeting</li>
+<li>Visit</li>
+<li>Demo</li>
+<li>Follow-up</li>
+<li>Task</li>
+<li>Note</li>
+</ul>
+<p>Fields:</p>
+<ul>
+<li>Activity ID</li>
+<li>Lead/Customer ID</li>
+<li>Activity type</li>
+<li>Date/time</li>
+<li>Assigned employee</li>
+<li>Subject</li>
+<li>Description</li>
+<li>Next follow-up date</li>
+<li>Status</li>
+<li>Outcome</li>
+</ul>
+<h3 id="crm-dashboard">11. CRM Dashboard</h3>
+<p>Your dashboard could show:</p>
+<p><strong>Lead Overview</strong></p>
+<ul>
+<li>Total Leads</li>
+<li>New Leads</li>
+<li>Contacted</li>
+<li>Qualified</li>
+<li>Unqualified</li>
+<li>Hot Leads</li>
+<li>Converted Leads</li>
+<li>Lost Leads</li>
+</ul>
+<p><strong>Sales Pipeline</strong></p>
+<ul>
+<li>Total Opportunities</li>
+<li>Pipeline Value</li>
+<li>Won Value</li>
+<li>Lost Value</li>
+<li>Expected Revenue</li>
+</ul>
+<p><strong>Follow-ups</strong></p>
+<ul>
+<li>Today’s Follow-ups</li>
+<li>Overdue Follow-ups</li>
+<li>Upcoming Follow-ups</li>
+</ul>
+<p><strong>Sources</strong></p>
+<ul>
+<li>Website leads</li>
+<li>Facebook leads</li>
+<li>Referral leads</li>
+<li>Phone leads</li>
+<li>Exhibition leads</li>
+</ul>
+<p>This lets management answer:</p>
+<blockquote>
+<p>“Where are our leads coming from, which salesperson is handling them,
+and how many are actually converting?”</p>
+</blockquote>
+<h3 id="recommended-database-structure">12. Recommended database
+structure</h3>
+<p>For an enterprise Sales/CRM application, I’d roughly use:</p>
+<pre class="text"><code>CRM_LEAD
+CRM_LEAD_TYPE
+CRM_LEAD_SOURCE
+CRM_LEAD_STATUS
+CRM_LEAD_ACTIVITY
+
+CRM_CUSTOMER
+CRM_CUSTOMER_TYPE
+CRM_CUSTOMER_CATEGORY
+CRM_CUSTOMER_ADDRESS
+
+CRM_CONTACT
+CRM_CONTACT_TYPE
+
+CRM_OPPORTUNITY
+CRM_OPPORTUNITY_STAGE
+
+CRM_ACTIVITY
+CRM_TASK
+CRM_FOLLOWUP
+
+CRM_CAMPAIGN
+CRM_CAMPAIGN_LEAD</code></pre>
+<p>The key relationship:</p>
+<pre class="text"><code>                  ┌── Activities
+                  │
+Lead ──&gt; Qualification ──&gt; Opportunity
+ │                            │
+ │                            ↓
+ └──────────────────────&gt; Customer
+                              │
+                              ├── Contacts
+                              ├── Addresses
+                              ├── Activities
+                              ├── Opportunities
+                              └── Sales</code></pre>
+<h3 id="most-important-mastersetup-data">Most important master/setup
+data</h3>
+<p>If you’re preparing the <strong>CRM module specification for your
+Sales App</strong>, I would make these configurable masters:</p>
+<ul>
+<li>Lead Type</li>
+<li>Lead Source</li>
+<li>Lead Status</li>
+<li>Lead Priority</li>
+<li>Customer Type</li>
+<li>Customer Category</li>
+<li>Industry</li>
+<li>Business Type</li>
+<li>Contact Type</li>
+<li>Opportunity Stage</li>
+<li>Activity Type</li>
+<li>Lost Reason</li>
+<li>Customer Status</li>
+<li>Territory</li>
+<li>Salesperson</li>
+<li>Customer Segment</li>
+</ul>
+<p>This gives you a CRM that can later connect cleanly to
+<strong>quotation → sales order → invoice → collection</strong>.</p>
+<h2 id="crm-module-structure">1. CRM Module Structure</h2>
+<pre class="text"><code>CRM
+│
+├── Dashboard
+│
+├── Lead Management
+│   ├── Lead List
+│   ├── Create Lead
+│   ├── Lead Details
+│   ├── Lead Conversion
+│   └── Lead Follow-up
+│
+├── Customer Management
+│   ├── Customer List
+│   ├── Create Customer
+│   ├── Customer Details
+│   ├── Contacts
+│   └── Addresses
+│
+├── Opportunity Management
+│   ├── Opportunity List
+│   ├── Create Opportunity
+│   ├── Pipeline
+│   └── Opportunity Details
+│
+├── Activity Management
+│   ├── Calls
+│   ├── Meetings
+│   ├── Visits
+│   ├── Emails
+│   ├── Tasks
+│   └── Follow-ups
+│
+├── CRM Masters
+│   ├── Lead Type
+│   ├── Lead Source
+│   ├── Lead Status
+│   ├── Lead Priority
+│   ├── Customer Type
+│   ├── Customer Category
+│   ├── Industry
+│   ├── Opportunity Stage
+│   ├── Activity Type
+│   └── Lost Reason
+│
+└── Reports
+    ├── Lead Report
+    ├── Lead Conversion
+    ├── Sales Pipeline
+    ├── Customer Report
+    ├── Follow-up Report
+    └── Salesperson Performance</code></pre>
+<h1 id="lead-management-1">2. Lead Management</h1>
+<p>This should probably be the <strong>main CRM screen</strong>.</p>
+<h3 id="lead-fields">Lead fields</h3>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 12%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lead ID</td>
+<td>Auto</td>
+<td>LD-000001</td>
+</tr>
+<tr>
+<td>Lead Date</td>
+<td>Yes</td>
+<td>25-Aug-2026</td>
+</tr>
+<tr>
+<td>Lead Name</td>
+<td>Yes</td>
+<td>ABC Trading</td>
+</tr>
+<tr>
+<td>Company Name</td>
+<td>No</td>
+<td>ABC Trading Ltd.</td>
+</tr>
+<tr>
+<td>Contact Person</td>
+<td>Yes</td>
+<td>Md. Rahim</td>
+</tr>
+<tr>
+<td>Designation</td>
+<td>No</td>
+<td>Purchase Manager</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Yes</td>
+<td>017XXXXXXXX</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>No</td>
+<td>02XXXXXXXX</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>No</td>
+<td><a href="mailto:rahim@abc.com">rahim@abc.com</a></td>
+</tr>
+<tr>
+<td>Lead Type</td>
+<td>Yes</td>
+<td>New Customer</td>
+</tr>
+<tr>
+<td>Lead Source</td>
+<td>Yes</td>
+<td>Website</td>
+</tr>
+<tr>
+<td>Industry</td>
+<td>No</td>
+<td>Manufacturing</td>
+</tr>
+<tr>
+<td>Customer Type</td>
+<td>No</td>
+<td>Corporate</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>No</td>
+<td>Dhaka</td>
+</tr>
+<tr>
+<td>Product/Service</td>
+<td>No</td>
+<td>ERP Software</td>
+</tr>
+<tr>
+<td>Estimated Value</td>
+<td>No</td>
+<td>৳500,000</td>
+</tr>
+<tr>
+<td>Expected Closing Date</td>
+<td>No</td>
+<td>30-Sep-2026</td>
+</tr>
+<tr>
+<td>Salesperson</td>
+<td>Yes</td>
+<td>Tanver</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Yes</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Yes</td>
+<td>New</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>No</td>
+<td>ERP requirement</td>
+</tr>
+<tr>
+<td>Remarks</td>
+<td>No</td>
+<td>Interested</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lead-status-1">Lead status</h3>
+<p>I recommend:</p>
+<pre class="text"><code>NEW
+ ↓
+CONTACTED
+ ↓
+QUALIFIED
+ ↓
+REQUIREMENT_IDENTIFIED
+ ↓
+PROPOSAL
+ ↓
+NEGOTIATION
+ ↓
+WON</code></pre>
+<p>Alternative ending:</p>
+<pre class="text"><code>                    ┌── WON
+NEGOTIATION ────────┤
+                    └── LOST</code></pre>
+<p>Don’t hard-code these values if possible. Keep them in a master
+table.</p>
+<hr />
+<h1 id="lead-type-1">3. Lead Type</h1>
+<p>Create a separate <strong>Lead Type Master</strong>.</p>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Lead Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEW</td>
+<td>New Customer</td>
+</tr>
+<tr>
+<td>EXISTING</td>
+<td>Existing Customer</td>
+</tr>
+<tr>
+<td>CROSS_SELL</td>
+<td>Cross Sell</td>
+</tr>
+<tr>
+<td>UP_SELL</td>
+<td>Up Sell</td>
+</tr>
+<tr>
+<td>RENEWAL</td>
+<td>Renewal</td>
+</tr>
+<tr>
+<td>REPEAT</td>
+<td>Repeat Business</td>
+</tr>
+<tr>
+<td>PARTNER</td>
+<td>Partner/Reseller</td>
+</tr>
+</tbody>
+</table>
+<p>Fields:</p>
+<pre class="text"><code>Lead Type ID
+Lead Type Code
+Lead Type Name
+Description
+Sort Order
+Active</code></pre>
+<hr />
+<h1 id="lead-source-1">4. Lead Source</h1>
+<p>Keep this separate from Lead Type.</p>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WEBSITE</td>
+<td>Website</td>
+</tr>
+<tr>
+<td>FACEBOOK</td>
+<td>Facebook</td>
+</tr>
+<tr>
+<td>LINKEDIN</td>
+<td>LinkedIn</td>
+</tr>
+<tr>
+<td>REFERRAL</td>
+<td>Referral</td>
+</tr>
+<tr>
+<td>PHONE</td>
+<td>Phone Call</td>
+</tr>
+<tr>
+<td>EMAIL</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>EVENT</td>
+<td>Exhibition/Event</td>
+</tr>
+<tr>
+<td>SALESPERSON</td>
+<td>Salesperson</td>
+</tr>
+<tr>
+<td>PARTNER</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td>WALKIN</td>
+<td>Walk-in</td>
+</tr>
+</tbody>
+</table>
+<p>This allows management to answer:</p>
+<blockquote>
+<p>Which marketing/sales channel produces the most customers?</p>
+</blockquote>
+<hr />
+<h1 id="lead-priority">5. Lead Priority</h1>
+<p>Simple:</p>
+<pre class="text"><code>LOW
+MEDIUM
+HIGH
+URGENT</code></pre>
+<p>You can also use colors in the UI, but store the
+<strong>code</strong>, not the color.</p>
+<hr />
+<h1 id="customer-management">6. Customer Management</h1>
+<p>Once a lead is converted, it becomes a customer.</p>
+<h3 id="customer-master">Customer master</h3>
+<pre class="text"><code>Customer ID
+Customer Code
+Customer Name
+Customer Type
+Customer Category
+Industry
+Business Type
+TIN
+BIN/VAT
+Website
+Salesperson
+Territory
+Customer Status
+Credit Limit
+Payment Terms
+Currency
+Remarks</code></pre>
+<h3 id="customer-type">Customer Type</h3>
+<p>Examples:</p>
+<pre class="text"><code>INDIVIDUAL
+CORPORATE
+GOVERNMENT
+NGO
+SME
+DEALER
+DISTRIBUTOR
+RESELLER</code></pre>
+<h3 id="customer-category">Customer Category</h3>
+<p>This is different from Customer Type.</p>
+<p>For example:</p>
+<pre class="text"><code>PREMIUM
+STANDARD
+REGULAR
+VIP
+STRATEGIC</code></pre>
+<hr />
+<h1 id="customer-address">7. Customer Address</h1>
+<p>Don’t put multiple addresses directly into the customer table.</p>
+<p>Use:</p>
+<pre class="text"><code>CRM_CUSTOMER_ADDRESS</code></pre>
+<p>Fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address ID</td>
+<td>1001</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>C-00001</td>
+</tr>
+<tr>
+<td>Address Type</td>
+<td>Billing</td>
+</tr>
+<tr>
+<td>Address Line 1</td>
+<td>25 Motijheel</td>
+</tr>
+<tr>
+<td>Address Line 2</td>
+<td>Suite 4B</td>
+</tr>
+<tr>
+<td>District</td>
+<td>Dhaka</td>
+</tr>
+<tr>
+<td>Division</td>
+<td>Dhaka</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>Bangladesh</td>
+</tr>
+<tr>
+<td>Postal Code</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>Primary</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Address Type:</p>
+<pre class="text"><code>BILLING
+SHIPPING
+OFFICE
+FACTORY
+HOME
+OTHER</code></pre>
+<hr />
+<h1 id="contact-management">8. Contact Management</h1>
+<p>One customer can have many contacts.</p>
+<pre class="text"><code>ABC Ltd.
+│
+├── Rahim — Managing Director
+├── Karim — Purchase Manager
+├── Sara — Accounts Manager
+└── Hasan — IT Manager</code></pre>
+<h3 id="contact-fields">Contact fields</h3>
+<pre class="text"><code>Contact ID
+Customer ID
+Contact Name
+Designation
+Department
+Mobile
+Phone
+Email
+Contact Type
+Is Primary
+Is Decision Maker
+Is Active
+Remarks</code></pre>
+<p>Contact Type:</p>
+<pre class="text"><code>DECISION_MAKER
+PURCHASER
+ACCOUNTS
+TECHNICAL
+ADMIN
+OTHER</code></pre>
+<hr />
+<h1 id="opportunity-management-1">9. Opportunity Management</h1>
+<p>A <strong>Lead</strong> tells you <em>who might buy</em>.</p>
+<p>An <strong>Opportunity</strong> tells you <em>what they might buy and
+how much it could be worth</em>.</p>
+<p>Example:</p>
+<pre class="text"><code>Lead
+ABC Ltd.
+   ↓
+Qualified
+   ↓
+Opportunity
+ERP Implementation
+   ↓
+৳2,500,000
+   ↓
+Negotiation
+   ↓
+Won</code></pre>
+<h3 id="opportunity-fields">Opportunity fields</h3>
+<pre class="text"><code>Opportunity ID
+Opportunity Number
+Lead ID
+Customer ID
+Opportunity Name
+Product/Service
+Description
+Estimated Value
+Probability
+Expected Closing Date
+Salesperson
+Stage
+Competitor
+Lost Reason
+Remarks</code></pre>
+<hr />
+<h1 id="opportunity-stage">10. Opportunity Stage</h1>
+<p>Recommended:</p>
+<pre class="text"><code>PROSPECTING
+QUALIFICATION
+REQUIREMENT
+DEMO
+PROPOSAL
+NEGOTIATION
+CLOSED_WON
+CLOSED_LOST</code></pre>
+<p>Each stage can have a probability.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th style="text-align: right;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prospecting</td>
+<td style="text-align: right;">10%</td>
+</tr>
+<tr>
+<td>Qualification</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Requirement</td>
+<td style="text-align: right;">40%</td>
+</tr>
+<tr>
+<td>Demo</td>
+<td style="text-align: right;">50%</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td style="text-align: right;">70%</td>
+</tr>
+<tr>
+<td>Negotiation</td>
+<td style="text-align: right;">85%</td>
+</tr>
+<tr>
+<td>Won</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td>Lost</td>
+<td style="text-align: right;">0%</td>
+</tr>
+</tbody>
+</table>
+<p>Then your CRM can calculate:</p>
+<p><strong>Weighted Pipeline = Opportunity Value ×
+Probability</strong></p>
+<hr />
+<h1 id="activity-follow-up-management">11. Activity / Follow-up
+Management</h1>
+<p>Every lead/customer should have an activity timeline.</p>
+<p>Example:</p>
+<pre class="text"><code>25-Aug
+📞 Phone Call
+Discussed ERP requirement.
+
+27-Aug
+🏢 Meeting
+Customer requested product demo.
+
+29-Aug
+📧 Email
+Quotation sent.
+
+02-Sep
+📞 Follow-up
+Customer will make decision next week.</code></pre>
+<h3 id="activity-fields">Activity fields</h3>
+<pre class="text"><code>Activity ID
+Activity Date
+Activity Type
+Lead ID
+Customer ID
+Opportunity ID
+Employee/Salesperson
+Subject
+Description
+Outcome
+Next Follow-up Date
+Status
+Priority
+Remarks</code></pre>
+<h3 id="activity-type">Activity Type</h3>
+<pre class="text"><code>CALL
+EMAIL
+MEETING
+VISIT
+DEMO
+FOLLOW_UP
+TASK
+NOTE</code></pre>
+<hr />
+<h1 id="follow-up">12. Follow-up</h1>
+<p>This deserves its own functionality.</p>
+<p>Salesperson should see:</p>
+<h3 id="todays-follow-ups">Today’s Follow-ups</h3>
+<pre class="text"><code>┌──────────────────────────────────────────────┐
+│ Today&#39;s Follow-ups                           │
+├──────────────────────────────────────────────┤
+│ ABC Ltd.     Call       10:00 AM    HIGH     │
+│ XYZ Ltd.     Meeting    12:30 PM    MEDIUM   │
+│ DEF Ltd.     Follow-up  03:00 PM    HIGH     │
+└──────────────────────────────────────────────┘</code></pre>
+<p>Statuses:</p>
+<pre class="text"><code>PENDING
+COMPLETED
+CANCELLED
+RESCHEDULED</code></pre>
+<hr />
+<h1 id="lost-reason">13. Lost Reason</h1>
+<p>When an opportunity/lead is lost, don’t just store
+<code>"Lost"</code>.</p>
+<p>Store the reason.</p>
+<pre class="text"><code>PRICE
+COMPETITOR
+NO_BUDGET
+NO_REQUIREMENT
+TIMING
+CUSTOMER_UNRESPONSIVE
+PRODUCT_NOT_SUITABLE
+PROJECT_CANCELLED
+OTHER</code></pre>
+<p>This becomes extremely useful for management reports.</p>
+<hr />
+<h1 id="crm-dashboard-1">14. CRM Dashboard</h1>
+<p>I’d make the dashboard look roughly like:</p>
+<pre class="text"><code>┌────────────────┬────────────────┬────────────────┐
+│ Total Leads    │ Qualified      │ New Customers  │
+│     1,250      │      420       │      125       │
+└────────────────┴────────────────┴────────────────┘
+
+┌────────────────┬────────────────┬────────────────┐
+│ Open Deals     │ Pipeline Value │ Won This Month │
+│      185       │   ৳25.5M       │    ৳8.2M       │
+└────────────────┴────────────────┴────────────────┘
+
+Lead Sources
+────────────────────────────────
+Website       ████████████  320
+Referral      ████████      210
+Facebook      ██████        150
+Salesperson   █████         120
+
+Today&#39;s Follow-ups
+────────────────────────────────
+10:00  ABC Ltd.      Call
+12:30  XYZ Ltd.      Meeting
+15:00  DEF Ltd.      Follow-up</code></pre>
+<hr />
+<h1 id="database-design">15. Database Design</h1>
+<p>Since you’re likely using an enterprise/Oracle-style system, I’d
+separate <strong>transaction tables</strong> and <strong>master
+tables</strong>.</p>
+<h3 id="masters">Masters</h3>
+<pre class="text"><code>CRM_LEAD_TYPE
+CRM_LEAD_SOURCE
+CRM_LEAD_STATUS
+CRM_LEAD_PRIORITY
+
+CRM_CUSTOMER_TYPE
+CRM_CUSTOMER_CATEGORY
+CRM_INDUSTRY
+CRM_BUSINESS_TYPE
+
+CRM_CONTACT_TYPE
+CRM_ACTIVITY_TYPE
+
+CRM_OPPORTUNITY_STAGE
+CRM_LOST_REASON
+CRM_CUSTOMER_STATUS</code></pre>
+<h3 id="transactions">Transactions</h3>
+<pre class="text"><code>CRM_LEAD
+CRM_LEAD_ACTIVITY
+
+CRM_CUSTOMER
+CRM_CUSTOMER_ADDRESS
+CRM_CONTACT
+
+CRM_OPPORTUNITY
+
+CRM_ACTIVITY
+CRM_FOLLOWUP</code></pre>
+<h3 id="relationship">Relationship</h3>
+<pre class="text"><code>                       ┌──────────────┐
+                       │   LEAD       │
+                       └──────┬───────┘
+                              │
+                    Qualification
+                              │
+                              ▼
+                       ┌──────────────┐
+                       │ OPPORTUNITY  │
+                       └──────┬───────┘
+                              │
+                       Won / Conversion
+                              │
+                              ▼
+                       ┌──────────────┐
+                       │  CUSTOMER    │
+                       └──────┬───────┘
+                              │
+              ┌───────────────┼──────────────┐
+              ▼               ▼              ▼
+          CONTACT         ADDRESS        ACTIVITY</code></pre>
+<h1 id="important-audit-fields">16. Important audit fields</h1>
+<p>Because this is a business application, <strong>every important table
+should have standard audit columns</strong>:</p>
+<pre class="text"><code>CREATED_BY
+CREATED_DATE
+UPDATED_BY
+UPDATED_DATE
+STATUS</code></pre>
+<p>For transactional data, also consider:</p>
+<pre class="text"><code>COMPANY_ID
+BRANCH_ID
+FINANCIAL_YEAR_ID</code></pre>
+<p>If your application supports multiple companies/branches, add these
+from the beginning rather than redesigning later.</p>
+<hr />
+<h1 id="crm-sales-integration">17. CRM → Sales integration</h1>
+<p>The most important part is not just CRM itself. It should connect to
+the rest of the Sales App:</p>
+<pre class="text"><code>                    CRM
+                     │
+                  LEAD
+                     │
+                QUALIFIED
+                     │
+               OPPORTUNITY
+                     │
+                QUOTATION
+                     │
+                SALES ORDER
+                     │
+                 DELIVERY
+                     │
+                  INVOICE
+                     │
+                 RECEIVABLE
+                     │
+                 PAYMENT</code></pre>
+<p>So I’d avoid designing CRM as an isolated module.</p>
+<h3 id="recommended-final-module-map">Recommended final module map</h3>
+<pre class="text"><code>SALES APPLICATION
+│
+├── CRM
+│   ├── Leads
+│   ├── Customers
+│   ├── Contacts
+│   ├── Opportunities
+│   ├── Activities
+│   └── Follow-ups
+│
+├── SALES
+│   ├── Quotations
+│   ├── Sales Orders
+│   ├── Deliveries
+│   └── Sales Invoices
+│
+├── ARM
+│   ├── Receivables
+│   ├── Collections
+│   └── Payments
+│
+└── REPORTS</code></pre>
+<p>Below is a practical starting schema</p>
+<h2 id="master-tables">1. Master tables</h2>
+<p>These tables contain configurable CRM values.</p>
+<h3 id="crm_lead_type"><code>CRM_LEAD_TYPE</code></h3>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_LEAD_TYPE (</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    LEAD_TYPE_ID      <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    LEAD_TYPE_CODE    <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    LEAD_TYPE_NAME    <span class="dt">VARCHAR2</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    DESCRIPTION       <span class="dt">VARCHAR2</span>(<span class="dv">500</span>),</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    SORT_ORDER        <span class="dt">NUMBER</span> <span class="kw">DEFAULT</span> <span class="dv">1</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    IS_ACTIVE         <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;Y&#39;</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    CREATED_BY        <span class="dt">NUMBER</span>,</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE      <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY        <span class="dt">NUMBER</span>,</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE      <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_LEAD_TYPE <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (LEAD_TYPE_ID),</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> UK_CRM_LEAD_TYPE_CODE <span class="kw">UNIQUE</span> (LEAD_TYPE_CODE),</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_LEAD_TYPE_ACTIVE <span class="kw">CHECK</span> (IS_ACTIVE <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>))</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p>Example:</p>
+<pre class="text"><code>NEW_CUSTOMER
+EXISTING_CUSTOMER
+CROSS_SELL
+UP_SELL
+RENEWAL
+REPEAT_BUSINESS
+PARTNER</code></pre>
+<hr />
+<h3 id="crm_lead_source"><code>CRM_LEAD_SOURCE</code></h3>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_LEAD_SOURCE (</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    LEAD_SOURCE_ID    <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    SOURCE_CODE       <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    SOURCE_NAME       <span class="dt">VARCHAR2</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    DESCRIPTION       <span class="dt">VARCHAR2</span>(<span class="dv">500</span>),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    SORT_ORDER        <span class="dt">NUMBER</span> <span class="kw">DEFAULT</span> <span class="dv">1</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    IS_ACTIVE         <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;Y&#39;</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    CREATED_BY        <span class="dt">NUMBER</span>,</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE      <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY        <span class="dt">NUMBER</span>,</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE      <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_LEAD_SOURCE <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (LEAD_SOURCE_ID),</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> UK_CRM_LEAD_SOURCE_CODE <span class="kw">UNIQUE</span> (SOURCE_CODE),</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_LEAD_SOURCE_ACTIVE <span class="kw">CHECK</span> (IS_ACTIVE <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>))</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p>Examples:</p>
+<pre class="text"><code>WEBSITE
+FACEBOOK
+LINKEDIN
+REFERRAL
+PHONE
+EMAIL
+EVENT
+WALK_IN
+SALESPERSON
+PARTNER</code></pre>
+<hr />
+<h3 id="other-master-tables">Other master tables</h3>
+<p>I recommend these:</p>
+<pre class="text"><code>CRM_LEAD_STATUS
+CRM_LEAD_PRIORITY
+CRM_CUSTOMER_TYPE
+CRM_CUSTOMER_CATEGORY
+CRM_CUSTOMER_STATUS
+CRM_INDUSTRY
+CRM_BUSINESS_TYPE
+CRM_CONTACT_TYPE
+CRM_ACTIVITY_TYPE
+CRM_OPPORTUNITY_STAGE
+CRM_LOST_REASON</code></pre>
+<p>Don’t put these values directly into <code>CRM_LEAD</code> as
+strings.</p>
+<p>For example, prefer:</p>
+<pre class="text"><code>LEAD_STATUS_ID = 3</code></pre>
+<p>instead of:</p>
+<pre class="text"><code>LEAD_STATUS = &#39;QUALIFIED&#39;</code></pre>
+<p>That gives you configurable masters.</p>
+<hr />
+<h1 id="main-lead-table">2. Main Lead table</h1>
+<p>This is the most important CRM transaction table.</p>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_LEAD (</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    LEAD_ID                 <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    LEAD_NO                 <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    LEAD_DATE               <span class="dt">DATE</span> <span class="kw">DEFAULT</span> <span class="fu">SYSDATE</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    LEAD_NAME               <span class="dt">VARCHAR2</span>(<span class="dv">200</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    COMPANY_NAME            <span class="dt">VARCHAR2</span>(<span class="dv">200</span>),</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    CONTACT_PERSON          <span class="dt">VARCHAR2</span>(<span class="dv">150</span>),</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    DESIGNATION             <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    MOBILE_NO               <span class="dt">VARCHAR2</span>(<span class="dv">30</span>),</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    PHONE_NO                <span class="dt">VARCHAR2</span>(<span class="dv">30</span>),</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    EMAIL                   <span class="dt">VARCHAR2</span>(<span class="dv">150</span>),</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    LEAD_TYPE_ID            <span class="dt">NUMBER</span>,</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    LEAD_SOURCE_ID          <span class="dt">NUMBER</span>,</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    LEAD_STATUS_ID          <span class="dt">NUMBER</span>,</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    LEAD_PRIORITY_ID        <span class="dt">NUMBER</span>,</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>    INDUSTRY_ID             <span class="dt">NUMBER</span>,</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_TYPE_ID        <span class="dt">NUMBER</span>,</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    ADDRESS                 <span class="dt">VARCHAR2</span>(<span class="dv">500</span>),</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>    DISTRICT                <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>    COUNTRY                 <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>    PRODUCT_ID              <span class="dt">NUMBER</span>,</span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    ESTIMATED_VALUE         <span class="dt">NUMBER</span>(<span class="dv">18</span>,<span class="dv">2</span>),</span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>    CURRENCY_CODE           <span class="dt">VARCHAR2</span>(<span class="dv">10</span>),</span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    EXPECTED_CLOSE_DATE     <span class="dt">DATE</span>,</span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>    SALES_PERSON_ID         <span class="dt">NUMBER</span>,</span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>    LEAD_SCORE              <span class="dt">NUMBER</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>    DESCRIPTION             <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a>    REMARKS                 <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>    CONVERTED_FLAG          <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;N&#39;</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>    CONVERTED_DATE          <span class="dt">DATE</span>,</span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>    CREATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE            <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE            <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_LEAD <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (LEAD_ID),</span>
+<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> UK_CRM_LEAD_NO <span class="kw">UNIQUE</span> (LEAD_NO),</span>
+<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_LEAD_CONVERTED</span>
+<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CHECK</span> (CONVERTED_FLAG <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>)),</span>
+<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> FK_CRM_LEAD_TYPE</span>
+<span id="cb46-58"><a href="#cb46-58" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (LEAD_TYPE_ID)</span>
+<span id="cb46-59"><a href="#cb46-59" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> CRM_LEAD_TYPE(LEAD_TYPE_ID),</span>
+<span id="cb46-60"><a href="#cb46-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-61"><a href="#cb46-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> FK_CRM_LEAD_SOURCE</span>
+<span id="cb46-62"><a href="#cb46-62" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (LEAD_SOURCE_ID)</span>
+<span id="cb46-63"><a href="#cb46-63" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> CRM_LEAD_SOURCE(LEAD_SOURCE_ID)</span>
+<span id="cb46-64"><a href="#cb46-64" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<hr />
+<h1 id="customer-table">3. Customer table</h1>
+<p>Once a lead is converted, you create a customer.</p>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_CUSTOMER (</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_ID            <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_CODE          <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_NAME          <span class="dt">VARCHAR2</span>(<span class="dv">200</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_TYPE_ID       <span class="dt">NUMBER</span>,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_CATEGORY_ID   <span class="dt">NUMBER</span>,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_STATUS_ID     <span class="dt">NUMBER</span>,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    INDUSTRY_ID            <span class="dt">NUMBER</span>,</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    BUSINESS_TYPE_ID       <span class="dt">NUMBER</span>,</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    TIN_NO                 <span class="dt">VARCHAR2</span>(<span class="dv">50</span>),</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    BIN_NO                 <span class="dt">VARCHAR2</span>(<span class="dv">50</span>),</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    WEBSITE                <span class="dt">VARCHAR2</span>(<span class="dv">200</span>),</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    SALES_PERSON_ID        <span class="dt">NUMBER</span>,</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    TERRITORY_ID           <span class="dt">NUMBER</span>,</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>    CREDIT_LIMIT           <span class="dt">NUMBER</span>(<span class="dv">18</span>,<span class="dv">2</span>),</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>    PAYMENT_TERM_ID        <span class="dt">NUMBER</span>,</span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>    CURRENCY_CODE          <span class="dt">VARCHAR2</span>(<span class="dv">10</span>),</span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>    PHONE_NO               <span class="dt">VARCHAR2</span>(<span class="dv">30</span>),</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>    EMAIL                  <span class="dt">VARCHAR2</span>(<span class="dv">150</span>),</span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>    REMARKS                <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>    CREATED_BY             <span class="dt">NUMBER</span>,</span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE           <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY             <span class="dt">NUMBER</span>,</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE           <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_CUSTOMER <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (CUSTOMER_ID),</span>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> UK_CRM_CUSTOMER_CODE <span class="kw">UNIQUE</span> (CUSTOMER_CODE)</span>
+<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<hr />
+<h1 id="customer-address-1">4. Customer Address</h1>
+<p>Don’t put billing and shipping addresses directly into
+<code>CRM_CUSTOMER</code>.</p>
+<p>Use a child table:</p>
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_CUSTOMER_ADDRESS (</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    ADDRESS_ID             <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_ID            <span class="dt">NUMBER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    ADDRESS_TYPE           <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    ADDRESS_LINE1          <span class="dt">VARCHAR2</span>(<span class="dv">250</span>),</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    ADDRESS_LINE2          <span class="dt">VARCHAR2</span>(<span class="dv">250</span>),</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    CITY                   <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    DISTRICT               <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    DIVISION               <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    POSTAL_CODE            <span class="dt">VARCHAR2</span>(<span class="dv">20</span>),</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>    COUNTRY                <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>    IS_PRIMARY             <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;N&#39;</span>,</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    CREATED_BY             <span class="dt">NUMBER</span>,</span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE           <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY             <span class="dt">NUMBER</span>,</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE           <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_CUSTOMER_ADDRESS</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (ADDRESS_ID),</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> FK_CRM_CUSTOMER_ADDRESS</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (CUSTOMER_ID)</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> CRM_CUSTOMER(CUSTOMER_ID),</span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_ADDRESS_PRIMARY</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CHECK</span> (IS_PRIMARY <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>))</span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p><code>ADDRESS_TYPE</code> can be:</p>
+<pre class="text"><code>BILLING
+SHIPPING
+OFFICE
+FACTORY
+HOME
+OTHER</code></pre>
+<hr />
+<h1 id="contact-table">5. Contact table</h1>
+<p>A customer can have multiple contacts.</p>
+<div class="sourceCode" id="cb50"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_CONTACT (</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    CONTACT_ID             <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_ID            <span class="dt">NUMBER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    CONTACT_NAME           <span class="dt">VARCHAR2</span>(<span class="dv">150</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    DESIGNATION            <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    DEPARTMENT             <span class="dt">VARCHAR2</span>(<span class="dv">100</span>),</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    CONTACT_TYPE_ID        <span class="dt">NUMBER</span>,</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    MOBILE_NO              <span class="dt">VARCHAR2</span>(<span class="dv">30</span>),</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    PHONE_NO               <span class="dt">VARCHAR2</span>(<span class="dv">30</span>),</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    EMAIL                  <span class="dt">VARCHAR2</span>(<span class="dv">150</span>),</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>    IS_PRIMARY             <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;N&#39;</span>,</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>    IS_DECISION_MAKER      <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;N&#39;</span>,</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>    IS_ACTIVE              <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;Y&#39;</span>,</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>    REMARKS                <span class="dt">VARCHAR2</span>(<span class="dv">500</span>),</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    CREATED_BY             <span class="dt">NUMBER</span>,</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE           <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY             <span class="dt">NUMBER</span>,</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE           <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_CONTACT <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (CONTACT_ID),</span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> FK_CRM_CONTACT_CUSTOMER</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (CUSTOMER_ID)</span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> CRM_CUSTOMER(CUSTOMER_ID),</span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_CONTACT_PRIMARY</span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CHECK</span> (IS_PRIMARY <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>)),</span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_CONTACT_DECISION</span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CHECK</span> (IS_DECISION_MAKER <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>)),</span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_CONTACT_ACTIVE</span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CHECK</span> (IS_ACTIVE <span class="kw">IN</span> (<span class="st">&#39;Y&#39;</span>,<span class="st">&#39;N&#39;</span>))</span>
+<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<hr />
+<h1 id="opportunity">6. Opportunity</h1>
+<p>This represents an actual sales opportunity.</p>
+<div class="sourceCode" id="cb51"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_OPPORTUNITY (</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    OPPORTUNITY_ID          <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    OPPORTUNITY_NO          <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    LEAD_ID                 <span class="dt">NUMBER</span>,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_ID             <span class="dt">NUMBER</span>,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    OPPORTUNITY_NAME        <span class="dt">VARCHAR2</span>(<span class="dv">200</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    PRODUCT_ID              <span class="dt">NUMBER</span>,</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    OPPORTUNITY_STAGE_ID    <span class="dt">NUMBER</span>,</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    ESTIMATED_VALUE         <span class="dt">NUMBER</span>(<span class="dv">18</span>,<span class="dv">2</span>),</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    PROBABILITY             <span class="dt">NUMBER</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    EXPECTED_CLOSE_DATE     <span class="dt">DATE</span>,</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    SALES_PERSON_ID         <span class="dt">NUMBER</span>,</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>    COMPETITOR              <span class="dt">VARCHAR2</span>(<span class="dv">200</span>),</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>    LOST_REASON_ID          <span class="dt">NUMBER</span>,</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>    DESCRIPTION             <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>    REMARKS                 <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a>    CREATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE            <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE            <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_OPPORTUNITY</span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (OPPORTUNITY_ID),</span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> UK_CRM_OPPORTUNITY_NO</span>
+<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">UNIQUE</span> (OPPORTUNITY_NO),</span>
+<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> CK_CRM_OPPORTUNITY_PROB</span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CHECK</span> (PROBABILITY <span class="kw">BETWEEN</span> <span class="dv">0</span> <span class="kw">AND</span> <span class="dv">100</span>)</span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<hr />
+<h1 id="activity-table">7. Activity table</h1>
+<p>This is where calls, meetings, visits, emails, etc. are stored.</p>
+<div class="sourceCode" id="cb52"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_ACTIVITY (</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    ACTIVITY_ID             <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    LEAD_ID                 <span class="dt">NUMBER</span>,</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_ID             <span class="dt">NUMBER</span>,</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    CONTACT_ID              <span class="dt">NUMBER</span>,</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    OPPORTUNITY_ID          <span class="dt">NUMBER</span>,</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    ACTIVITY_TYPE_ID        <span class="dt">NUMBER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    ACTIVITY_DATE           <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    SUBJECT                 <span class="dt">VARCHAR2</span>(<span class="dv">250</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    DESCRIPTION             <span class="dt">VARCHAR2</span>(<span class="dv">2000</span>),</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>    OUTCOME                 <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>    SALES_PERSON_ID         <span class="dt">NUMBER</span>,</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>    NEXT_FOLLOWUP_DATE      <span class="dt">DATE</span>,</span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>    STATUS                  <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;PENDING&#39;</span>,</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>    CREATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE            <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE            <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_ACTIVITY</span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (ACTIVITY_ID)</span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p>This lets you create a timeline like:</p>
+<pre class="text"><code>Lead
+ ├── Phone Call
+ ├── Meeting
+ ├── Email
+ ├── Demo
+ └── Follow-up</code></pre>
+<hr />
+<h1 id="follow-up-table">8. Follow-up table</h1>
+<p>For a serious sales system, I would make follow-up a separate
+transaction instead of relying only on <code>CRM_ACTIVITY</code>.</p>
+<div class="sourceCode" id="cb54"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_FOLLOWUP (</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    FOLLOWUP_ID             <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    LEAD_ID                 <span class="dt">NUMBER</span>,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    CUSTOMER_ID             <span class="dt">NUMBER</span>,</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    OPPORTUNITY_ID          <span class="dt">NUMBER</span>,</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    ASSIGNED_TO             <span class="dt">NUMBER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    FOLLOWUP_DATE           <span class="dt">DATE</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    FOLLOWUP_TIME           <span class="dt">VARCHAR2</span>(<span class="dv">10</span>),</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    FOLLOWUP_TYPE_ID        <span class="dt">NUMBER</span>,</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>    SUBJECT                 <span class="dt">VARCHAR2</span>(<span class="dv">250</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    REMARKS                 <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>    STATUS                  <span class="dt">VARCHAR2</span>(<span class="dv">30</span>) <span class="kw">DEFAULT</span> <span class="st">&#39;PENDING&#39;</span>,</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>    COMPLETED_DATE          <span class="dt">DATE</span>,</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>    COMPLETION_REMARKS      <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>    CREATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE            <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>    UPDATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>    UPDATED_DATE            <span class="dt">TIMESTAMP</span>,</span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_FOLLOWUP</span>
+<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (FOLLOWUP_ID)</span>
+<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<hr />
+<h1 id="lead-history">9. Lead History</h1>
+<p>This is <strong>very important</strong>.</p>
+<p>You should know how a lead changed over time.</p>
+<p>For example:</p>
+<pre class="text"><code>25-Aug   New
+26-Aug   Contacted
+28-Aug   Qualified
+30-Aug   Proposal
+05-Sep   Negotiation
+10-Sep   Won</code></pre>
+<p>Create:</p>
+<div class="sourceCode" id="cb56"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CRM_LEAD_HISTORY (</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    HISTORY_ID              <span class="dt">NUMBER</span> <span class="kw">GENERATED</span> <span class="kw">BY</span> <span class="kw">DEFAULT</span> <span class="kw">AS</span> IDENTITY,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    LEAD_ID                 <span class="dt">NUMBER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    OLD_STATUS_ID           <span class="dt">NUMBER</span>,</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    NEW_STATUS_ID           <span class="dt">NUMBER</span>,</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    OLD_ASSIGNED_TO         <span class="dt">NUMBER</span>,</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    NEW_ASSIGNED_TO         <span class="dt">NUMBER</span>,</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    ACTION_TYPE             <span class="dt">VARCHAR2</span>(<span class="dv">50</span>),</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>    REMARKS                 <span class="dt">VARCHAR2</span>(<span class="dv">1000</span>),</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>    CREATED_BY              <span class="dt">NUMBER</span>,</span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>    CREATED_DATE            <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">SYSTIMESTAMP</span>,</span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> PK_CRM_LEAD_HISTORY</span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (HISTORY_ID),</span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> FK_CRM_LEAD_HISTORY_LEAD</span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (LEAD_ID)</span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> CRM_LEAD(LEAD_ID)</span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+<p>This gives you an audit trail for CRM.</p>
+<hr />
+<h1 id="lead-customer-conversion">10. Lead → Customer conversion</h1>
+<p>I’d handle conversion like this:</p>
+<pre class="text"><code>CRM_LEAD
+   │
+   │ Qualified
+   ▼
+CRM_OPPORTUNITY
+   │
+   │ Won
+   ▼
+CRM_CUSTOMER
+   │
+   ├── CRM_CONTACT
+   ├── CRM_CUSTOMER_ADDRESS
+   └── Sales Transactions</code></pre>
+<p>Keep the original <code>LEAD_ID</code> in the customer/opportunity
+relationship where useful, so you can trace:</p>
+<blockquote>
+<p><strong>Which lead created this customer?</strong></p>
+</blockquote>
+<hr />
+<h1 id="overall-oracle-crm-er-structure">11. Overall Oracle CRM ER
+structure</h1>
+<pre class="text"><code>                         ┌─────────────────┐
+                         │  CRM_LEAD_TYPE  │
+                         └────────┬────────┘
+                                  │
+┌─────────────────┐               │
+│ CRM_LEAD_SOURCE │───────────────┤
+└─────────────────┘               │
+                                  ▼
+                         ┌─────────────────┐
+                         │    CRM_LEAD     │
+                         └───────┬─────────┘
+                                 │
+                  ┌──────────────┼──────────────┐
+                  │              │              │
+                  ▼              ▼              ▼
+           LEAD_HISTORY      ACTIVITY      OPPORTUNITY
+                                                │
+                                                │
+                                                ▼
+                                         ┌─────────────┐
+                                         │  CUSTOMER   │
+                                         └──────┬──────┘
+                                                │
+                              ┌─────────────────┼───────────────┐
+                              │                 │               │
+                              ▼                 ▼               ▼
+                           CONTACT           ADDRESS        ACTIVITY</code></pre>
+<h2 id="one-important-improvement-for-your-sales-app">12. One important
+improvement for your Sales App</h2>
+<p>Since you’re using <strong>Oracle</strong>, I wouldn’t create a
+separate table for every tiny dropdown unless there’s a business
+reason.</p>
+<p>For example, these can be proper masters:</p>
+<pre class="text"><code>CRM_LEAD_TYPE
+CRM_LEAD_SOURCE
+CRM_LEAD_STATUS
+CRM_LEAD_PRIORITY
+CRM_OPPORTUNITY_STAGE
+CRM_ACTIVITY_TYPE
+CRM_LOST_REASON</code></pre>
+<p>But things like:</p>
+<pre class="text"><code>BILLING
+SHIPPING
+HOME
+OFFICE</code></pre>
+<p>can simply be controlled with a check constraint or a centralized
+lookup table, depending on how configurable the application needs to
+be.</p>
+<p>Also, if your Sales App already has <strong>employee, product,
+branch, company, territory, payment term, and user</strong> tables,
+<strong>do not duplicate them inside CRM</strong>. Reference the
+existing master tables with foreign keys.</p>
+<h3 id="recommended-next-step">Recommended next step</h3>
+<p>For an Oracle project, the next useful artifact is a <strong>complete
+CRM ERD + all table DDL with PK/FK/indexes/sequences and sample master
+data</strong>.</p>
+<p><strong>Which do you want next: <code>full DDL</code> or
+<code>ERD first</code>?</strong></p>
